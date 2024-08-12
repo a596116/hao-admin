@@ -12,7 +12,7 @@ export const setupPlugins = () => {
   const plugins: any[] = [
     vue(),
     vueDevTools(),
-    visualizer(),
+    // visualizer(),
     createSvgIconsPlugin({
       iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')],
     }),
