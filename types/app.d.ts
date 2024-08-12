@@ -8,11 +8,8 @@ declare namespace App {
 
     /** App setting */
     interface AppSetting {
-      defaultThemeColor: string
       /** Theme color */
       themeColor: string
-      /** Other color */
-      otherColor: OtherColor
 
       title: string
       /** Page */
@@ -36,13 +33,6 @@ declare namespace App {
         /** 驗證碼類型 圖片 滑塊 無 */
         captchaType: 'image' | 'slider' | null
       }
-    }
-
-    interface OtherColor {
-      info: string
-      success: string
-      warning: string
-      error: string
     }
 
     interface ThemeColor extends OtherColor {
