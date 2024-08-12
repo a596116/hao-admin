@@ -3,6 +3,29 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "keywords": [
+    "hao-admin",
+    "element-plus",
+    "tailwindcss",
+    "typescript",
+    "pinia",
+    "vue3",
+    "vite"
+  ],
+  "homepage": "https://github.com/a596116/hao-admin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a596116/hao-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/a596116/hao-admin/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "a596116",
+    "email": "a596116@gmail.com",
+    "url": "https://github.com/a596116"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
@@ -10,7 +33,10 @@
     "test:unit": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock,build}/**/*.{vue,js,ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write  \"src/**/*.{js,ts,json,tsx,css,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --cache --fix \"**/*.{html,vue,css,scss}\" --cache-location node_modules/.cache/stylelint/",
+    "lint": "pnpm lint:eslint && pnpm lint:prettier && pnpm lint:stylelint",
     "format": "prettier --write src/",
     "prepare": "husky install",
     "commit": "git add . && git-cz"
@@ -27,6 +53,8 @@
     "@tsconfig/node20": "^20.1.4",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.14.5",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
+    "@typescript-eslint/parser": "^8.0.1",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
@@ -35,12 +63,18 @@
     "commitizen": "^4.3.0",
     "cz-git": "^1.9.4",
     "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.23.0",
     "husky": "^8.0.0",
     "jsdom": "^24.1.0",
     "lint-staged": "^15.2.8",
     "npm-run-all2": "^6.2.0",
     "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "stylelint": "^16.8.1",
+    "stylelint-config-standard": "^36.0.1",
     "typescript": "~5.4.0",
     "vite": "^5.3.1",
     "vite-plugin-vue-devtools": "^7.3.1",
