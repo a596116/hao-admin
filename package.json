@@ -60,6 +60,7 @@
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
+    "@vueuse/core": "^10.11.1",
     "commitizen": "^4.3.0",
     "cz-git": "^1.9.4",
     "eslint": "^8.57.0",
@@ -73,13 +74,19 @@
     "npm-run-all2": "^6.2.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.6.6",
+    "rollup-plugin-visualizer": "^5.12.0",
     "stylelint": "^16.8.1",
     "stylelint-config-standard": "^36.0.1",
     "typescript": "~5.4.0",
+    "unplugin-auto-import": "^0.18.2",
+    "unplugin-vue-components": "^0.27.3",
     "vite": "^5.3.1",
+    "vite-plugin-pwa": "^0.20.1",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-vue-devtools": "^7.3.1",
     "vitest": "^1.6.0",
-    "vue-tsc": "^2.0.21"
+    "vue-tsc": "^2.0.21",
+    "workbox-window": "^7.1.0"
   },
   "config": {
     "commitizen": {
