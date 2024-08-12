@@ -1,0 +1,25 @@
+{
+  // "extends": "@tsconfig/node20/tsconfig.json",
+  "include": [
+    "./**/*",
+    "vite.config.*",
+    "vitest.config.*",
+    "cypress.config.*",
+    "nightwatch.conf.*",
+    "playwright.config.*",
+    "eslint.config.js"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "#/*": ["./src/assets/*"]
+    },
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "types": ["node", "element-plus/global", "lodash-es", "vite-plugin-pwa/client"]
+  }
+}
