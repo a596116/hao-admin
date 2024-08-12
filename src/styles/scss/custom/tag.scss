@@ -1,0 +1,22 @@
+.el-tag {
+  &.el-tag--primary {
+    --el-tag-bg-color: color-mix(in srgb, var(--el-color-primary) 10%, transparent) !important;
+    --el-tag-border-color: var(--el-color-primary) !important;
+  }
+  &.el-tag--danger {
+    --el-tag-bg-color: color-mix(in srgb, var(--el-color-danger) 10%, transparent) !important;
+    --el-tag-border-color: var(--el-color-danger) !important;
+  }
+  &.el-tag--warning {
+    --el-tag-bg-color: color-mix(in srgb, var(--el-color-warning) 10%, transparent) !important;
+    --el-tag-border-color: var(--el-color-warning) !important;
+  }
+  &.el-tag--success {
+    --el-tag-bg-color: color-mix(in srgb, var(--el-color-success) 10%, transparent) !important;
+    --el-tag-border-color: var(--el-color-success) !important;
+  }
+  &.el-tag--info {
+    --el-tag-bg-color: color-mix(in srgb, var(--el-color-info) 10%, transparent) !important;
+    --el-tag-border-color: var(--el-color-info) !important;
+  }
+}

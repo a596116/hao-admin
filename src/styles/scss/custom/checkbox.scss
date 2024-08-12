@@ -1,0 +1,7 @@
+.el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+  background-color: color-mix(in srgb, var(--el-color-primary) 60%, transparent) !important;
+  border-color: color-mix(in srgb, var(--el-color-primary) 60%, transparent) !important;
+}
+.el-checkbox__input.is-disabled.is-checked .el-checkbox__inner:after {
+  border-color: var(--hd-white) !important;
+}

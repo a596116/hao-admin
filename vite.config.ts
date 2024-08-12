@@ -4,8 +4,9 @@ import { setupPlugins } from './vite/plugins'
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): any => {
-  const isBuild = command === 'build'
-  const env = loadEnv(mode, process.cwd(), '')
+  // const isBuild = command === 'build'
+  // const env = loadEnv(mode, process.cwd(), '')
+
   return {
     plugins: [...setupPlugins()],
     resolve: {
@@ -17,14 +18,14 @@ export default ({ command, mode }: ConfigEnv): any => {
     build: {
       rollupOptions: {
         output: {
-          // entryFileNames: `assets/[name].js`,
-          // chunkFileNames: `assets/[name].js`,
-          // assetFileNames: `assets/[name].[ext]`,
-          // manualChunks(id: string) {
-          //   if (id.includes('node_modules')) {
-          //     return id.toString().split('node_modules/')[1].split('/')[0].toString()
-          //   }
-          // },
+          entryFileNames: `assets/[name].js`,
+          chunkFileNames: `assets/[name].js`,
+          assetFileNames: `assets/[name].[ext]`,
+          manualChunks(id: string) {
+            if (id.includes('node_modules')) {
+              return id.toString().split('node_modules/')[1].split('/')[0].toString()
+            }
+          },
         },
       },
       cssCodeSplit: true,
@@ -49,14 +50,7 @@ export default ({ command, mode }: ConfigEnv): any => {
     server: {
       host: '0.0.0.0',
       port: 9527,
-      proxy: {
-        '^/api/.*': {
-          target: env.VITE_BASEURL,
-          changeOrigin: true,
-          secure: false,
-          rewrite: (path: any) => path.replace(/^\/api/, ''),
-        },
-      },
+      proxy: {},
       // 预热文件以提前转换和缓存结果，降低启动期间的初始页面加载时长并防止转换瀑布
       warmup: {
         clientFiles: ['./index.html', './src/{views,components}/*'],

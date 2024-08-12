@@ -1,0 +1,15 @@
+.dark .el-select__wrapper {
+  background-color: var(--hd-bg);
+}
+
+.el-select__prefix,
+.el-select__suffix {
+  color: var(--hd-text-50);
+}
+.el-select__placeholder {
+  color: var(--hd-text);
+}
+
+.el-select-dropdown__item {
+  color: var(--hd-text);
+}

@@ -1,0 +1,131 @@
+@use './custom/badge.scss' as *;
+@use './custom/button.scss' as *;
+@use './custom/form.scss' as *;
+@use './custom/input.scss' as *;
+@use './custom/messageBox.scss' as *;
+@use './custom/dropDown.scss' as *;
+@use './custom/menu.scss' as *;
+@use './custom/dialog.scss' as *;
+@use './custom/notification.scss' as *;
+@use './custom/draggable.scss' as *;
+@use './custom/button.scss' as *;
+@use './custom/loading.scss' as *;
+@use './custom/radio.scss' as *;
+@use './custom/layui-table.scss' as *;
+@use './custom/pagination.scss' as *;
+@use './custom/table.scss' as *;
+@use './custom/tag.scss' as *;
+@use './custom/checkbox.scss' as *;
+@use './custom/select.scss' as *;
+@use './custom/skeleton.scss' as *;
+
+:root:root {
+  // 變量
+  //---------------------------------------------
+  --hd-primary: #8c9dc8;
+  --hd-primary-hover: #7d8abc;
+  --hd-primary-active: #626da0;
+  --hd-login-bg: #d6dac8;
+  --hd-success: #63e2b7;
+  --hd-warning: #f2c97d;
+  --hd-danger: #e88080;
+  --hd-error: #e88080;
+  --hd-info: #70c0e8;
+  --hd-light: #f8f9fa;
+  --hd-link: #007bff;
+  --hd-text: #2a2a2a;
+  --hd-text-50: #494949;
+  --hd-dark: #343a40;
+  --hd-dark-50: #798189;
+  --hd-white: #ffffff;
+  --hd-white-50: #f1f1f1;
+  --hd-disable: color-mix(in srgb, var(--hd-dark) 10%, transparent);
+  --hd-border: #dfdfdf;
+  --hd-bg: #e8eaeb;
+  --hd-bg-1: #ffffff;
+  --hd-bg-50: rgb(242, 242, 242);
+  --hd-popper-bg: #ffffff;
+  --hd-shadow: rgba(0, 0, 0, 0.1);
+  // font
+  --font-h1: 40px;
+  --font-h2: 32px;
+  --font-h3: 28px;
+  --font-h4: 24px;
+  --font-h5: 20px;
+  --font-h6: 16px;
+  --font-blockquote: 20px;
+  --font-body: 16px;
+  --font-samll: 14px;
+
+  // 變更 element plus 主色
+  --el-color-primary: var(--hd-primary);
+  --el-color-danger: var(--hd-danger);
+  --el-color-error: var(--hd-danger);
+  --el-color-success: var(--hd-success);
+  --el-color-warning: var(--hd-warning);
+  --el-color-info: var(--hd-info);
+  --el-input-border-color: var(--hd-border);
+  --el-border-color: var(--hd-border);
+  --el-border-color-light: var(--hd-border);
+  --primary-text-color: var(--hd-dark);
+  --blue-primary-500: var(--hd-primary);
+  --table-row-bg: var(--hd-primary);
+  --table-expand-row-bg: var(--hd-bg);
+  --form-view-bg: var(--hd-primary);
+  --el-border-radius-base: 8px;
+  --el-disabled-bg-color: var(--hd-disable);
+  --el-bg-color: var(--hd-bg-1);
+  --el-bg-color-overlay: var(--hd-bg-1);
+  --el-color-primary-light-9: var(--hd-white-50);
+  --el-fill-color-light: var(--hd-white-50);
+  --el-mask-color: color-mix(in srgb, var(--hd-white) 60%, transparent);
+}
+
+:root.dark {
+  --hd-light: #343a40;
+  --hd-text: #e1e1e1;
+  --hd-text-50: #ffffff82;
+  --hd-dark: #cfd3dc;
+  --hd-dark-50: #ffffff82;
+  --hd-white: #343a40;
+  --hd-white-50: #4b535b;
+  --hd-border: #858181;
+  --hd-bg: #1d1e20;
+  --hd-bg-1: #141414;
+  --hd-bg-50: #393a3c;
+  --hd-popper-bg: #393a3c;
+  --el-text-color-primary: #ffffff;
+  --hd-shadow: rgba(255, 255, 255, 0.323);
+  --el-mask-color: color-mix(in srgb, var(--hd-white) 30%, transparent);
+  // --el-text-color-regular: #ffffff;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.el-drawer__body {
+  padding: 0 !important;
+}
+
+.el-switch.is-disabled {
+  opacity: 1 !important;
+}
+
+:root.dark .el-segmented {
+  --el-segmented-color: #ffffff !important;
+}
+.el-segmented__item:not(.is-disabled):not(.is-selected):hover {
+  background-color: transparent !important;
+}
+
+.theme-setting-drawer {
+  .el-drawer__header {
+    color: var(--hd-text);
+  }
+  .el-color-picker__trigger {
+    width: 60px;
+  }
+}
