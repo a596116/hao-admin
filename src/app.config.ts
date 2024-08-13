@@ -1,5 +1,4 @@
-/** Default theme settings */
-
+/** Default app settings */
 export const appConfig: App.Theme.AppSetting = {
   title: 'HaoAdmin',
   themeColor: '#5352ed',

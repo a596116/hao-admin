@@ -1,11 +1,11 @@
-import type { Plugin } from 'vite'
+import type { PluginOption } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
 
 // 自動導入包，模塊
 
-export const autoImport = (plugin: Plugin[]) => {
+export const autoImport = (plugin: PluginOption[]) => {
   plugin.push(
     AutoImport({
       resolvers: [ElementPlusResolver()],
