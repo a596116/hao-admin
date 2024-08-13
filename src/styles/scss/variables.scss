@@ -105,27 +105,3 @@
   justify-content: center;
   align-items: center;
 }
-
-.el-drawer__body {
-  padding: 0 !important;
-}
-
-.el-switch.is-disabled {
-  opacity: 1 !important;
-}
-
-:root.dark .el-segmented {
-  --el-segmented-color: #ffffff !important;
-}
-.el-segmented__item:not(.is-disabled):not(.is-selected):hover {
-  background-color: transparent !important;
-}
-
-.theme-setting-drawer {
-  .el-drawer__header {
-    color: var(--hd-text);
-  }
-  .el-color-picker__trigger {
-    width: 60px;
-  }
-}

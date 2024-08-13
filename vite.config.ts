@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { loadEnv, type ConfigEnv, type UserConfigExport } from 'vite'
 import { setupPlugins } from './vite/plugins'
+import { __APP_INFO__ } from './vite/build/utils'
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
@@ -49,6 +50,10 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       warmup: {
         clientFiles: ['./index.html', './src/{views,components}/*'],
       },
+    },
+    define: {
+      __INTLIFY_PROD_DEVTOOLS__: false,
+      __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
   }
 }
