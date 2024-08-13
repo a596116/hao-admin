@@ -6,6 +6,9 @@ hero:
   name: "HaoAdmin"
   text: "HaoAdmin"
   tagline: My great project tagline
+  image:
+    src: https://i.imgur.com/0B5zmhp.png
+    alt: Hao Admin
   actions:
     - theme: brand
       text: Markdown Examples
