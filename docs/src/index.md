@@ -4,25 +4,25 @@ layout: home
 
 hero:
   name: "HaoAdmin"
-  text: "HaoAdmin"
-  tagline: My great project tagline
+  text: ""
+  tagline: 容易上手的後台系統
   image:
     src: https://i.imgur.com/0B5zmhp.png
     alt: Hao Admin
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 快速開始 ➔
+      link: /guide/introduction
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 在線預覽
+      link: /
 
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+# features:
+#   - title: Feature A
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+#   - title: Feature B
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+#   - title: Feature C
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
