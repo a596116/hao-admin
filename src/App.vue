@@ -15,5 +15,5 @@ useThemeStore()
 </script>
 
 <style lang="scss">
-@import url('@/styles/scss/base.scss');
+// @import '@/styles/scss/base.scss';
 </style>

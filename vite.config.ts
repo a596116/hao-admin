@@ -43,7 +43,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     css: {
       preprocessorOptions: {
         scss: {
-          // additionalData: '@import "@/styles/scss/base.scss";',
+          additionalData: '@import "@/styles/scss/base.scss";',
         },
       },
     },
