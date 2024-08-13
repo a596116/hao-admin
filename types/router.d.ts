@@ -4,11 +4,9 @@ import { RouteRecordRaw } from 'vue-router'
 declare module 'vue-router' {
   interface RouteMeta {
     code?: string
-
     menu?: IMenu
     number?: number // 用來排序
-
-    permissions: string[]
+    permissions?: string[]
     page?: {
       auth: boolean
       name: string
@@ -23,14 +21,27 @@ declare module 'vue-router' {
 
 export interface IRouteModule {
   page: {
-    auth: boolean
     name: string
-    component: string
+    component: any
     menu: {
+      defaultPath?: String //有兩層子路由在設定預設路由時會用到
       title: String
       icon: String
-      defaultPath?: String //有兩層子路由在設定預設路由時會用到
     }
   }
-  children: RouteRecordRaw[]
+  children: {
+    name: string
+    path: string
+    component: any
+    meta: {
+      page?: IRouteModule['page']
+      code: string
+      menu: {
+        title: string
+        hiddenMenu?: boolean
+        hiddenHistory?: boolean
+      }
+      number: number
+    }
+  }[]
 }

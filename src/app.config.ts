@@ -3,6 +3,9 @@ export const appConfig: App.Theme.AppSetting = {
   title: 'HaoAdmin',
   themeColor: '#5352ed',
 
+  /** 從 router/module 自動導入路由 */
+  autoImportRouter: true,
+
   page: {
     /** 是否開啟頁面動畫 */
     animate: true,

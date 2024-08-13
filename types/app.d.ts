@@ -8,10 +8,13 @@ declare namespace App {
 
     /** App setting */
     interface AppSetting {
+      title: string
       /** Theme color */
       themeColor: string
 
-      title: string
+      /** 從 router/module 自動導入路由 */
+      autoImportRouter: boolean
+
       /** Page */
       page: {
         /** 是否啟用頁面動畫 */

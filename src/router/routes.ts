@@ -1,0 +1,22 @@
+import type { RouteRecordRaw } from 'vue-router'
+
+export const routes = [
+  {
+    path: '/',
+    name: 'admin',
+    redirect: '/home',
+    component: () => import('@/layouts/index.vue'),
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/Auth/Login.vue'),
+    meta: { guest: true, menu: { title: '登入', hiddenMenu: true, hiddenHistory: true } },
+  },
+  {
+    path: '/:any(.*)',
+    name: 'notFound',
+    component: () => import('@/views/error/404.vue'),
+    meta: { menu: { title: 'notFound', hiddenMenu: true, hiddenHistory: true } },
+  },
+] as RouteRecordRaw[]

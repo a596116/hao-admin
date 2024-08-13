@@ -3,8 +3,6 @@ interface Menu {
   hiddenMenu?: boolean
   hiddenHistory?: boolean
   icon?: string
-  isClick?: boolean
-  route?: string
   defaultPath?: string
 }
 
