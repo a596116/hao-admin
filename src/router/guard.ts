@@ -14,7 +14,7 @@ class Guard {
     this.router.onError(this.onError.bind(this))
   }
 
-  private whiteList = ['/login', '/forget-password', '/reset-password']
+  private whiteList = ['/auth/login', '/auth/forget-password', '/auth/reset-password']
 
   private async beforeEach(to: RouteLocationNormalized, from: RouteLocationNormalized) {
     NProgress.start()

@@ -1,34 +1,43 @@
 .el-menu {
   --el-menu-hover-bg-color: none;
   --el-menu-bg-color: var(--hd-bg-1) !important;
+
   // --el-menu-base-level-padding: 14px !important;
   --el-menu-item-height: 44px !important;
   --el-menu-sub-item-height: 44px !important;
 }
 
 .el-menu--popup {
-  background: var(--hd-popper-bg) !important;
-  border-radius: 0.5rem !important;
-  padding: 0px !important;
   min-width: 120px;
+  padding: 0 !important;
+  background: var(--hd-popper-bg) !important;
   border: none !important;
+  border-radius: 0.5rem !important;
+
   * {
     color: var(--hd-text);
   }
+
   .el-menu-item {
-    background: var(--hd-popper-bg) !important;
     @apply rounded-md;
+
+    background: var(--hd-popper-bg) !important;
+
     &:hover {
       @apply text-hd-primary-active;
+
       span,
       svg,
       * {
         @apply text-hd-primary-active;
       }
     }
+
     &.is-active {
       @apply text-hd-text;
+
       background-color: var(--hd-primary-active) !important;
+
       span,
       svg,
       * {
@@ -37,17 +46,20 @@
     }
   }
 }
+
 .el-menu--collapse {
   .el-sub-menu__icon-arrow {
     // --el-menu-base-level-padding: 18px !important;
     @apply hidden;
   }
 }
+
 .el-menu-item .el-menu-tooltip__trigger,
 .el-menu-item,
 .el-sub-menu__title {
   padding: 0 12px !important;
 }
+
 .el-menu--inline {
   .el-menu-item .el-menu-tooltip__trigger,
   .el-menu-item,

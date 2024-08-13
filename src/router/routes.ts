@@ -8,10 +8,18 @@ export const routes = [
     component: () => import('@/layouts/index.vue'),
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/Auth/Login.vue'),
-    meta: { guest: true, menu: { title: '登入', hiddenMenu: true, hiddenHistory: true } },
+    path: '/auth',
+    name: 'auth',
+    redirect: '/auth/login',
+    component: () => import('@/layouts/auth.vue'),
+    children: [
+      {
+        path: '/auth/login',
+        name: 'login',
+        component: () => import('@/views/Auth/Login.vue'),
+        meta: { guest: true, menu: { title: '登入', hiddenMenu: true, hiddenHistory: true } },
+      },
+    ],
   },
   {
     path: '/:any(.*)',

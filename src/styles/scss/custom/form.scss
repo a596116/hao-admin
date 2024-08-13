@@ -2,19 +2,24 @@
 .custom-form {
   --el-fill-color-blank: var(--hd-bg-1);
   --el-text-color-regular: var(--hd-text);
+
   .el-input__wrapper {
     // box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset !important;
   }
+
   .el-form-item__label {
     color: var(--hd-text) !important;
   }
+
   .el-row {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
+
   .el-form-item {
     margin-bottom: 1.6rem;
   }
+
   .el-textarea {
     border-radius: var(--el-input-border-radius, var(--el-border-radius-base));
   }
@@ -58,8 +63,8 @@
   .el-input-number.is-controls-right {
     .el-input-number__increase,
     .el-input-number__decrease {
-      border: none !important;
       background-color: transparent;
+      border: none !important;
     }
   }
 

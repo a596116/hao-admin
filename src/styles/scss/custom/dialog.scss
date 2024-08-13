@@ -1,10 +1,7 @@
 .custom-dialog {
   @apply flex w-[90%] flex-col xl:w-[70%];
+
   border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
 
   .el-result {
     --el-result-padding: 24px 12px;
@@ -25,6 +22,7 @@
   // 關閉按鈕
   .el-dialog__headerbtn {
     @apply center;
+
     // @apply center absolute -right-[10px] -top-[10px] z-[100] flex h-auto w-auto
     //   rounded-[12px] p-2 text-hd-dark-50 duration-150;
     // box-shadow: 0 5px 20px 0 var(--hd-shadow) !important;
@@ -38,9 +36,11 @@
     // }
     .el-icon {
       @apply h-[24px] w-[24px] text-hd-text duration-150;
+
       svg {
         @apply h-[24px] w-[24px];
       }
+
       &:hover {
         @apply text-hd-primary-hover;
       }
@@ -51,22 +51,23 @@
 .custom-dialog-body {
   .el-dialog__body {
     position: relative;
-    overflow: auto;
     flex: 1;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    overflow: auto;
   }
 
   .el-dialog__header {
     padding-top: 6px !important;
-    padding-bottom: 6px !important;
     padding-right: 0 !important;
+    padding-bottom: 6px !important;
   }
 }
 
 // 表單dialog
 .manage-dialog {
-  padding-bottom: 0px !important;
+  padding-bottom: 0 !important;
+
   .el-dialog__header {
     border-bottom: 1px solid var(--hd-border);
   }
@@ -74,10 +75,6 @@
 
 .custom-confirm-dialog {
   border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
 
   .el-result__title {
     --el-result-title-margin-top: 0;
@@ -90,12 +87,12 @@
   }
 
   .el-dialog__header {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
   .custom-dialog.el-dialog {
     width: 90% !important;
   }
@@ -104,6 +101,7 @@
 // 底部按鈕
 .custom-dialog-body footer {
   @apply pb-0;
+
   justify-content: flex-end !important;
 }
 
@@ -115,6 +113,7 @@
 
 .dialog-fade-leave-active {
   animation: fade-out 0.2s linear;
+
   .el-dialog {
     animation: dialog-close 0.2s cubic-bezier(0.78, 0.14, 0.15, 0.86);
   }

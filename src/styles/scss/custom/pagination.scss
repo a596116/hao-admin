@@ -1,8 +1,8 @@
 .hd-pagination.is-background .btn-next.is-active,
 .hd-pagination.is-background .btn-prev.is-active,
 .hd-pagination.is-background .el-pager li.is-active {
-  background-color: transparent !important;
   color: var(--hd-primary) !important;
+  background-color: transparent !important;
   border: 1px solid var(--hd-primary) !important;
 }
 
@@ -30,8 +30,8 @@
 .hd-pagination.el-pagination--small .btn-next,
 .hd-pagination.el-pagination--small .btn-prev,
 .hd-pagination.el-pagination--small .el-pager li {
-  font-size: 14px !important;
-  height: 26px !important;
-  line-height: 26px !important;
   min-width: 26px !important;
+  height: 26px !important;
+  font-size: 14px !important;
+  line-height: 26px !important;
 }

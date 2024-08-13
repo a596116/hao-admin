@@ -1,18 +1,23 @@
 .el-button {
   @apply text-hd-text;
 }
+
 .el-button--default {
   background-color: var(--hd-bg-1);
+
   &:hover,
   &:focus {
     background-color: color-mix(in srgb, var(--hd-bg-1) 80%, transparent);
     border: 1px solid var(--hd-primary-hover);
   }
 }
+
 // primary
 .el-button--primary {
   @apply text-white;
+
   background-color: var(--el-color-primary);
+
   &:hover,
   &:focus {
     background-color: color-mix(in srgb, var(--el-color-primary) 80%, transparent);
@@ -22,14 +27,18 @@
     color: var(--el-color-primary-light-5) !important;
     border-color: var(--el-color-primary-light-5) !important;
   }
+
   &.is-plain:active {
     color: var(--el-color-primary-light-3) !important;
   }
 }
+
 // success
 .el-button--success {
   @apply text-white;
+
   background-color: var(--el-color-success);
+
   &:hover,
   &:focus {
     background-color: color-mix(in srgb, var(--el-color-success) 80%, transparent);
@@ -39,14 +48,18 @@
     color: var(--el-color-success-light-5) !important;
     border-color: var(--el-color-success-light-5) !important;
   }
+
   &.is-plain:active {
     color: var(--el-color-success-light-3) !important;
   }
 }
+
 // warning
 .el-button--warning {
   @apply text-white;
+
   background-color: var(--el-color-warning);
+
   &:hover,
   &:focus {
     background-color: color-mix(in srgb, var(--el-color-warning) 80%, transparent);
@@ -56,14 +69,18 @@
     color: var(--el-color-warning-light-5) !important;
     border-color: var(--el-color-warning-light-5) !important;
   }
+
   &.is-plain:active {
     color: var(--el-color-warning-light-3) !important;
   }
 }
+
 // danger
 .el-button--danger {
   @apply text-white;
+
   background-color: var(--el-color-danger);
+
   &:hover,
   &:focus {
     background-color: color-mix(in srgb, var(--el-color-danger) 80%, transparent);
@@ -73,14 +90,18 @@
     color: var(--el-color-danger-light-5) !important;
     border-color: var(--el-color-danger-light-5) !important;
   }
+
   &.is-plain:active {
     color: var(--el-color-danger-light-3) !important;
   }
 }
+
 // info
 .el-button--info {
   @apply text-white;
+
   background-color: var(--el-color-info);
+
   &:hover,
   &:focus {
     background-color: color-mix(in srgb, var(--el-color-info) 80%, transparent);
@@ -90,6 +111,7 @@
     color: var(--el-color-info-light-5) !important;
     border-color: var(--el-color-info-light-5) !important;
   }
+
   &.is-plain:active {
     color: var(--el-color-info-light-3) !important;
   }
@@ -110,24 +132,27 @@
 // -----懸浮動畫-----
 .el-button {
   transition: all 0.2s ease;
+
   &.animation:hover {
-    transform: translateY(-2px);
     box-shadow:
       0 4px 4px -5px color-mix(in srgb, var(--hd-primary) 15%, transparent),
       0 6px 6px -5px color-mix(in srgb, var(--hd-primary) 15%, transparent),
       0 8px 8px -5px color-mix(in srgb, var(--hd-primary) 15%, transparent);
+    transform: translateY(-2px);
   }
 }
 
 .button-tip.el-button:not(.is-text) {
-  border: none;
   background-color: transparent;
+  border: none;
 }
+
 .button-tip.el-button:not(.is-text):hover,
 .button-tip.el-button:not(.is-text):focus {
   background-color: transparent;
   opacity: 0.6;
 }
+
 .el-button.is-text:not(.is-disabled):focus,
 .el-button.is-text:not(.is-disabled):hover {
   background-color: transparent;
@@ -135,24 +160,29 @@
 
 .el-button--default.is-text {
   @apply relative border-none;
+
   background-color: transparent !important;
+
   &::before {
-    content: '';
     @apply absolute left-0 top-0 z-0 h-full w-full;
+
+    z-index: 1;
+    pointer-events: none;
+    content: '';
     background-color: color-mix(in srgb, var(--primary-text-color) 30%, transparent);
     border-radius: inherit;
-    pointer-events: none;
-    transition: all 0.25s ease;
-    z-index: 1;
-    transform: scale(0.5);
     opacity: 0;
+    transition: all 0.25s ease;
+    transform: scale(0.5);
   }
+
   &:hover {
     &::before {
-      transform: scale(1);
       opacity: 1;
+      transform: scale(1);
     }
   }
+
   &:hover,
   &:focus {
     @apply text-hd-text;
@@ -161,95 +191,114 @@
 
 .el-button--primary.is-text {
   @apply relative;
+
   &::before {
-    content: '';
     @apply absolute left-0 top-0 z-0 h-full w-full;
+
+    z-index: 1;
+    pointer-events: none;
+    content: '';
     background-color: color-mix(in srgb, var(--el-color-primary) 30%, transparent);
     border-radius: inherit;
-    pointer-events: none;
-    transition: all 0.25s ease;
-    z-index: 1;
-    transform: scale(0.5);
     opacity: 0;
+    transition: all 0.25s ease;
+    transform: scale(0.5);
   }
+
   &:hover {
     &::before {
-      transform: scale(1);
       opacity: 1;
+      transform: scale(1);
     }
   }
+
   &:hover,
   &:focus {
     @apply text-hd-primary;
   }
 }
+
 .el-button--danger.is-text {
   @apply relative;
+
   &::before {
-    content: '';
     @apply absolute left-0 top-0 z-0 h-full w-full;
+
+    z-index: 1;
+    pointer-events: none;
+    content: '';
     background-color: color-mix(in srgb, var(--el-color-danger) 20%, transparent);
     border-radius: inherit;
-    pointer-events: none;
-    transition: all 0.25s ease;
-    z-index: 1;
-    transform: scale(0.5);
     opacity: 0;
+    transition: all 0.25s ease;
+    transform: scale(0.5);
   }
+
   &:hover {
     &::before {
-      transform: scale(1);
       opacity: 1;
+      transform: scale(1);
     }
   }
+
   &:hover,
   &:focus {
     @apply text-hd-danger;
   }
 }
+
 .el-button--success.is-text {
   @apply relative;
+
   &::before {
-    content: '';
     @apply absolute left-0 top-0 z-0 h-full w-full;
+
+    z-index: 1;
+    pointer-events: none;
+    content: '';
     background-color: color-mix(in srgb, var(--el-color-success) 20%, transparent);
     border-radius: inherit;
-    pointer-events: none;
-    transition: all 0.25s ease;
-    z-index: 1;
-    transform: scale(0.5);
     opacity: 0;
+    transition: all 0.25s ease;
+    transform: scale(0.5);
   }
+
   &:hover {
     &::before {
-      transform: scale(1);
       opacity: 1;
+      transform: scale(1);
     }
   }
+
   &:hover,
   &:focus {
     @apply text-hd-success;
   }
 }
+
 .el-button--info.is-text {
   @apply relative;
+
   &::before {
-    content: '';
     @apply absolute left-0 top-0 z-0 h-full w-full;
+
+    z-index: 1;
+    pointer-events: none;
+    content: '';
     background-color: color-mix(in srgb, var(--el-color-info) 20%, transparent);
     border-radius: inherit;
-    pointer-events: none;
-    transition: all 0.25s ease;
-    z-index: 1;
-    transform: scale(0.5);
     opacity: 0;
+    transition: all 0.25s ease;
+    transform: scale(0.5);
   }
+
   &:hover {
     &::before {
-      transform: scale(1);
       opacity: 1;
+      transform: scale(1);
     }
   }
+
   &:hover,
   &:focus {
     @apply text-hd-white-50;

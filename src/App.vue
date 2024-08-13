@@ -11,10 +11,9 @@
 import { ElConfigProvider } from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import { useThemeStore } from '@/stores/themeStore'
-import router from './router'
 useThemeStore()
 </script>
 
 <style lang="scss">
-@import '@/styles/scss/base.scss';
+@import url('@/styles/scss/base.scss');
 </style>

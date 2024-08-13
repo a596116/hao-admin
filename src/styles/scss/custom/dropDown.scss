@@ -5,33 +5,36 @@
   padding: 4px !important;
   background: var(--hd-popper-bg) !important;
 }
+
 .el-dropdown-menu__item {
-  border-radius: var(--el-border-radius-base) !important;
   padding: 5px 8px;
+  border-radius: var(--el-border-radius-base) !important;
+
   &:hover {
     background: var(--hd-bg) !important;
   }
 }
 
 .el-dropdown__popper.el-popper,
-.el-dropdown__popper.el-popper .el-popper__arrow:before {
-  border: none !important;
+.el-dropdown__popper.el-popper .el-popper__arrow::before {
   background: var(--hd-popper-bg) !important;
+  border: none !important;
 }
+
 .el-popper {
   color: var(--hd-text) !important;
-  border: none !important;
   background: var(--hd-popper-bg) !important;
+  border: none !important;
   box-shadow:
-    0 3px 6px -4px rgba(0, 0, 0, 0.12),
-    0 6px 16px 0 rgba(0, 0, 0, 0.08),
-    0 9px 28px 8px rgba(0, 0, 0, 0.05) !important;
+    0 3px 6px -4px rgb(0 0 0 / 12%),
+    0 6px 16px 0 rgb(0 0 0 / 8%),
+    0 9px 28px 8px rgb(0 0 0 / 5%) !important;
 }
 
 .el-popper,
-.el-popper .el-popper__arrow:before {
-  border: none !important;
+.el-popper .el-popper__arrow::before {
   background: var(--hd-popper-bg) !important;
+  border: none !important;
 }
 
 // color-picker
@@ -39,6 +42,7 @@
   .el-button.is-text {
     color: var(--hd-text) !important;
   }
+
   .el-button.is-plain {
     color: var(--hd-white) !important;
   }

@@ -5,29 +5,22 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  name: {
-    type: String,
-    required: true,
+// ----------- props -----------
+const props = withDefaults(
+  defineProps<{
+    name: string
+    color?: string
+    width?: string
+    height?: string
+    animation?: boolean
+  }>(),
+  {
+    color: '',
+    width: '22px',
+    height: '22px',
+    animation: false,
   },
-  color: {
-    type: String,
-    default: '',
-  },
-  width: {
-    type: String,
-    default: '22px',
-  },
-
-  height: {
-    type: String,
-    default: '22px',
-  },
-  animation: {
-    type: Boolean,
-    default: false,
-  },
-})
+)
 
 const iconName = computed(() => `#icon-${props.name}`)
 const svgClass = computed(() => {
@@ -40,14 +33,15 @@ const svgClass = computed(() => {
 
 <style lang="scss" scoped>
 .svg-icon {
-  fill: currentColor;
-  vertical-align: middle;
   display: inline-block;
+  vertical-align: middle;
+  fill: currentcolor;
 }
+
 path {
   fill: none;
-  stroke: #333333;
-  stroke-width: 1;
+  stroke: #333;
   stroke-linecap: round;
+  stroke-width: 1;
 }
 </style>

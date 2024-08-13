@@ -2,22 +2,27 @@
 .el-input {
   --el-input-bg-color: var(--hd-bg-1) !important;
 }
+
 .el-input-number {
   .el-input-number__decrease {
-    border-right: 0px;
     background: none;
+    border-right: 0;
   }
+
   .el-input-number__increase {
-    border-left: 0px;
     background: none;
+    border-left: 0;
   }
+
   .el-input__wrapper {
     background-color: transparent;
   }
 }
+
 .el-textarea__inner {
   // background-color: transparent !important;
 }
+
 .el-input {
   .el-input-group__append,
   .el-input-group__prepend {

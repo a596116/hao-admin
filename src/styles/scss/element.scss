@@ -7,9 +7,10 @@
 }
 
 :root.dark .el-segmented {
-  --el-segmented-color: #ffffff !important;
+  --el-segmented-color: #fff !important;
 }
-.el-segmented__item:not(.is-disabled):not(.is-selected):hover {
+
+.el-segmented__item:not(.is-disabled, .is-selected):hover {
   background-color: transparent !important;
 }
 
@@ -17,6 +18,7 @@
   .el-drawer__header {
     color: var(--hd-text);
   }
+
   .el-color-picker__trigger {
     width: 60px;
   }

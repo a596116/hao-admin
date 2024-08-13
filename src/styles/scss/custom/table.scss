@@ -7,6 +7,7 @@ $tableRadius: 8px;
   --el-bg-color: var(--hd-bg-1) !important;
   --el-fill-color-blank: var(--hd-bg-1) !important;
   --el-border-color-lighter: var(--hd-border) !important;
+
   .el-table__header-wrapper {
     // border-bottom: 1px solid var(--hd-border);
     // background-color: var(--hd-bg-50) !important;
@@ -20,6 +21,7 @@ $tableRadius: 8px;
     //   }
     // }
   }
+
   // .el-table__row {
   //   td:first-child {
   //     border-radius: $tableRadius 0 0 $tableRadius !important;
@@ -40,9 +42,10 @@ $tableRadius: 8px;
   &.el-table--border::before,
   &.el-table--border::after,
   .el-table__border-left-patch {
-    height: 0px !important;
-    width: 0px !important;
+    width: 0 !important;
+    height: 0 !important;
   }
+
   &.el-table--border .el-table__cell {
     border-right: 1px solid transparent !important;
   }
@@ -51,8 +54,10 @@ $tableRadius: 8px;
     cursor: pointer;
   }
 }
+
 .el-table__body .el-table__cell {
-  border-right: 0px !important;
+  border-right: 0 !important;
+
   // cursor: default !important;
 }
 
@@ -74,9 +79,11 @@ $tableRadius: 8px;
 .default-table.el-table .row-bg--total {
   --el-table-tr-bg-color: var(--el-border-color-extra-light);
 }
+
 .default-table.el-table .row-bg {
   --el-table-tr-bg-color: var(--table-row-bg);
 }
+
 .default-table.el-table .expand-row-bg {
   --el-table-tr-bg-color: var(--table-expand-row-bg);
 }
@@ -107,10 +114,11 @@ $tableRadius: 8px;
   }
 
   .el-table__footer-wrapper tbody td.el-table__cell {
+    padding: 2px 0;
     background-color: var(--hd-bg-1) !important;
+
     // border-top: 1px solid var(--hd-border);
     border-bottom: 1px solid var(--hd-border);
-    padding: 2px 0;
   }
 
   .el-table .el-table__footer-wrapper .cell {
@@ -118,9 +126,9 @@ $tableRadius: 8px;
   }
 
   .el-table__footer-wrapper .cell {
-    text-align: right;
     font-weight: 500;
     color: #6b7280;
+    text-align: right;
   }
 }
 

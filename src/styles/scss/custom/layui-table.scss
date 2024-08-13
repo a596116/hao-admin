@@ -1,8 +1,8 @@
 .layui-table {
   width: 100%;
-  background-color: #fff;
   color: #666;
   table-layout: fixed;
+  background-color: #fff;
 }
 
 .layui-table-col-special {
@@ -16,17 +16,17 @@
 
 .layui-table-box-header {
   min-height: 50px;
+  padding: 10px 15px;
   line-height: 30px;
   background-color: #fafafa;
-  padding: 10px 15px;
   border-bottom: 1px solid #eee;
 }
 
 .layui-table-footer {
   min-height: 50px;
+  padding: 10px 15px;
   line-height: 30px;
   background-color: #fafafa;
-  padding: 10px 15px;
 }
 
 .layui-table-mend,
@@ -62,28 +62,29 @@
 
 .layui-table td {
   position: relative;
-  padding: 2px 8px !important;
-  min-height: 14px;
   height: 20px;
-  line-height: 22px;
+  min-height: 14px;
+  padding: 2px 8px !important;
   font-size: 14px;
+  line-height: 22px;
 }
 
 .layui-table .no-tr td {
   position: relative;
-  padding: 4px 8px !important;
-  min-height: 14px;
   height: 20px;
-  line-height: 22px;
+  min-height: 14px;
+  padding: 4px 8px !important;
   font-size: 14px;
+  line-height: 22px;
 }
+
 .layui-table th {
   position: relative;
-  padding: 9px 8px;
-  min-height: 20px;
   height: 40px;
-  line-height: 20px;
+  min-height: 20px;
+  padding: 9px 8px;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .layui-table[lay-skin='line'] td,
@@ -112,8 +113,8 @@
 
 .layui-table[lay-size='sm'] td,
 .layui-table[lay-size='sm'] th {
-  font-size: 12px;
   padding: 5px 10px;
+  font-size: 12px;
 }
 
 .layui-table[lay-size='sm'] td,
@@ -178,8 +179,8 @@
 }
 
 .layui-table-view .layui-form-radio {
-  line-height: 0;
   padding: 0;
+  line-height: 0;
 }
 
 .layui-table-view .layui-form-radio > i {
@@ -189,26 +190,26 @@
 
 .layui-table-init {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
+  z-index: 110;
   width: 100%;
   height: 100%;
   text-align: center;
-  z-index: 110;
 }
 
 .layui-table-init .layui-icon {
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
   margin: -15px 0 0 -15px;
   font-size: 30px;
   color: #c2c2c2;
 }
 
 .layui-table-header {
-  border-width: 0 0 1px;
   overflow: hidden;
+  border-width: 0 0 1px;
 }
 
 .layui-table-header-wrapper {
@@ -228,13 +229,14 @@
   position: relative;
   width: 26px;
   height: 26px;
-  line-height: 26px;
-  border-radius: 2px;
   margin-right: 10px;
-  text-align: center;
+  line-height: 26px;
   color: #333;
-  border: 1px solid #ccc;
+  text-align: center;
   cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+
   .layui-icon {
     font-size: 15px;
   }
@@ -252,14 +254,14 @@
   position: absolute;
   top: 29px;
   left: -1px;
-  padding: 5px 0;
   min-width: 150px;
   min-height: 40px;
-  border: 1px solid #d2d2d2;
-  text-align: left;
+  padding: 5px 0;
   overflow-y: auto;
+  text-align: left;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  border: 1px solid #d2d2d2;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 12%);
 }
 
 .layui-table-cell,
@@ -279,7 +281,6 @@
 .layui-table-tool-panel li {
   padding: 0 10px;
   line-height: 30px;
-  -webkit-transition: 0.5s all;
   transition: 0.5s all;
 }
 
@@ -294,8 +295,8 @@
 
 .layui-table-tool-panel li .layui-form-checkbox[lay-skin='primary'] i {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
 }
 
 .layui-table-tool-panel li .layui-form-checkbox[lay-skin='primary'] span {
@@ -303,8 +304,8 @@
 }
 
 .layui-table-tool .layui-table-tool-self .layui-table-tool-panel {
-  left: auto;
   right: -1px;
+  left: auto;
 }
 
 .layui-table-tool-self {
@@ -314,19 +315,19 @@
 
 .layui-table-col-set {
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
   width: 20px;
   height: 100%;
-  border-width: 0 0 0 1px;
   background-color: #fff;
+  border-width: 0 0 0 1px;
 }
 
 .layui-table-sort {
   width: 10px;
   height: 20px;
-  margin-left: 5px;
   margin-right: 5px;
+  margin-left: 5px;
   cursor: pointer !important;
 }
 
@@ -339,8 +340,8 @@
 .layui-table-sort .layui-table-sort-asc {
   top: 3px;
   border-top: none;
-  border-bottom-style: solid;
   border-bottom-color: #b2b2b2;
+  border-bottom-style: solid;
 }
 
 .layui-table-sort .layui-table-sort-asc:hover {
@@ -349,9 +350,9 @@
 
 .layui-table-sort .layui-table-sort-desc {
   bottom: 5px;
-  border-bottom: none;
-  border-top-style: solid;
   border-top-color: #b2b2b2;
+  border-top-style: solid;
+  border-bottom: none;
 }
 
 .layui-table-sort .layui-table-sort-desc:hover {
@@ -367,15 +368,15 @@
 }
 
 .layui-table-cell {
-  height: 28px;
-  line-height: 28px;
   position: relative;
   box-sizing: border-box;
+  height: 28px;
+  line-height: 28px;
 }
 
 .layui-table-cell-checkbox .layui-form-checkbox[lay-skin='primary'] {
-  padding: 0 !important;
   top: -1px;
+  padding: 0 !important;
 }
 
 .layui-table-cell .layui-table-link {
@@ -392,39 +393,40 @@
 }
 
 .layui-table-cell-expand-icon {
-  font-size: 12px;
-  //   border-radius: var(--global-border-radius);
-  border: 1px solid #eee;
-  text-align: center;
-  background-color: #fafafa;
   width: 22px;
   margin-right: 8px;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fafafa;
+
+  //   border-radius: var(--global-border-radius);
+  border: 1px solid #eee;
 }
 
 .layui-table-cell-expand-icon-spaced {
+  display: inline-block;
   width: 26px;
   visibility: hidden;
-  display: inline-block;
 }
 
 .layui-table-body {
   position: relative;
-  overflow: auto;
   margin-bottom: -1px;
+  overflow: auto;
   transition: all 0.1s ease-in-out;
 }
 
 .layui-table-body .layui-none {
-  line-height: 26px;
   padding: 30px 15px;
-  text-align: center;
+  line-height: 26px;
   color: #999;
+  text-align: center;
 }
 
 .layui-table-fixed {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
   z-index: 101;
 }
 
@@ -437,24 +439,24 @@
 }
 
 .layui-table-fixed-left {
+  position: sticky !important;
   left: 0;
   z-index: 2;
   background: white;
-  position: sticky !important;
 }
 
 .layui-table-fixed-right {
+  position: sticky !important;
   right: 0;
   z-index: 2;
   background: white;
-  position: sticky !important;
-  border-left: 1px solid #eee !important;
   border-right: none !important;
+  border-left: 1px solid #eee !important;
 }
 
 .layui-table-tool-checkbox {
-  padding: 10px;
   max-height: 200px;
+  padding: 10px;
   overflow-y: auto;
 }
 
@@ -464,7 +466,7 @@
 }
 
 .layui-table-tool-checkbox > *:last-child {
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
 
 .layui-table-has-fixed-left .layui-table-fixed-left-last {
@@ -483,11 +485,11 @@
   right: 0;
   bottom: -1px;
   width: 30px;
-  transform: translate(100%);
-  transition: box-shadow 0.3s;
-  content: '';
   pointer-events: none;
+  content: '';
   box-shadow: inset 10px 0 8px -8px #00000026;
+  transition: box-shadow 0.3s;
+  transform: translate(100%);
 }
 
 .layui-table-fixed-right-first::after {
@@ -496,21 +498,21 @@
   bottom: -1px;
   left: 0;
   width: 30px;
-  transform: translate(-100%);
-  transition: box-shadow 0.3s;
-  content: '';
   pointer-events: none;
+  content: '';
   box-shadow: inset -10px 0 8px -8px #00000026;
+  transition: box-shadow 0.3s;
+  transform: translate(-100%);
 }
 
 .layui-table-tool {
   z-index: 890;
-  border-width: 0 0 1px;
-  padding: 10px 15px;
-  line-height: 30px;
-  min-height: 50px;
   display: flex;
   width: 100%;
+  min-height: 50px;
+  padding: 10px 15px;
+  line-height: 30px;
+  border-width: 0 0 1px;
 }
 
 .layui-table-tool .layui-btn-container {
@@ -519,23 +521,23 @@
 
 .layui-table-page,
 .layui-table-total {
-  border-width: 1px 0 0;
   margin-bottom: -1px;
   overflow: hidden;
+  border-width: 1px 0 0;
 }
 
 .layui-table-page {
   position: relative;
   width: 100%;
-  padding: 7px 7px 0;
   height: 41px;
+  padding: 7px 7px 0;
   font-size: 12px;
   white-space: nowrap;
 }
 
 .layui-table-page .layui-laypage select {
-  margin-top: 0px;
   height: 26px;
+  margin-top: 0;
 }
 
 .layui-table-page > div {
@@ -549,10 +551,10 @@
 .layui-table-page .layui-laypage a,
 .layui-table-page .layui-laypage span {
   height: 26px;
-  line-height: 26px;
   margin-bottom: 10px;
-  border: none;
+  line-height: 26px;
   background: 0 0;
+  border: none;
 }
 
 .layui-table-page .layui-laypage a,
@@ -561,8 +563,8 @@
 }
 
 .layui-table-page .layui-laypage span {
-  margin-left: 0;
   padding: 0;
+  margin-left: 0;
 }
 
 .layui-table-page .layui-laypage .layui-laypage-prev {
@@ -570,8 +572,8 @@
 }
 
 .layui-table-page .layui-laypage .layui-laypage-curr .layui-laypage-em {
-  left: 0;
   top: 0;
+  left: 0;
   padding: 0;
 }
 
@@ -602,8 +604,8 @@
 .layui-table-view .layui-form-checkbox,
 .layui-table-view .layui-form-switch {
   top: 0;
-  margin: 0;
   box-sizing: content-box;
+  margin: 0;
 }
 
 .layui-table-view .layui-table-cell-number,
@@ -618,9 +620,9 @@
 }
 
 .layui-table-loading {
-  text-align: center;
-  padding-bottom: 30px;
   padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
 }
 
 .layui-table-loading .layui-icon {
@@ -630,30 +632,31 @@
 
 .lay-table-cols-resize {
   position: absolute;
-  top: 0;
-  height: 100% !important;
-  bottom: 0;
-  left: auto !important;
-  right: 0px;
-  width: 2px;
-  cursor: col-resize;
-  touch-action: none;
-  user-select: none;
+  inset: 0 0 0 auto;
   z-index: 2;
+  width: 2px;
+  height: 100% !important;
+  touch-action: none;
+  cursor: col-resize;
+  user-select: none;
+
   //   background-color: var(--global-primary-color);
   opacity: 0;
   transition: 200ms ease-in opacity;
+
   &::before {
-    content: '';
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     display: block;
     width: 16px;
+    height: 100%;
+    content: '';
+
     // background: var(--global-primary-color);
     opacity: 0.1;
-    height: 100%;
   }
+
   &:hover {
     opacity: 1;
   }
@@ -661,18 +664,21 @@
 
 .layui-table-body-loading {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .layui-table-main::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
+
 .layui-table-main::-webkit-scrollbar-thumb {
   border-radius: 10px;
+
   //   background-color: #eeeeee;
 }
+
 .layui-table-main::-webkit-scrollbar-thumb:hover {
   //   background-color: #dddddd;
 }
@@ -681,10 +687,12 @@
   width: 8px;
   height: 8px;
 }
+
 .layui-table-tool-checkbox::-webkit-scrollbar-thumb {
+  background-color: #eee;
   border-radius: 10px;
-  background-color: #eeeeee;
 }
+
 .layui-table-tool-checkbox::-webkit-scrollbar-thumb:hover {
-  background-color: #dddddd;
+  background-color: #ddd;
 }

@@ -21,7 +21,6 @@
 
 :root:root {
   // 變量
-  //---------------------------------------------
   --hd-primary: #fff;
   --hd-primary-hover: #fff;
   --hd-primary-active: #fff;
@@ -37,15 +36,16 @@
   --hd-text-50: #494949;
   --hd-dark: #343a40;
   --hd-dark-50: #798189;
-  --hd-white: #ffffff;
+  --hd-white: #fff;
   --hd-white-50: #f1f1f1;
   --hd-disable: color-mix(in srgb, var(--hd-dark) 10%, transparent);
-  --hd-border: #dfdfdf;
+  --hd-border: #c1c1c1;
   --hd-bg: #e8eaeb;
-  --hd-bg-1: #ffffff;
-  --hd-bg-50: rgb(242, 242, 242);
-  --hd-popper-bg: #ffffff;
-  --hd-shadow: rgba(0, 0, 0, 0.1);
+  --hd-bg-1: #fff;
+  --hd-bg-50: rgb(242 242 242);
+  --hd-popper-bg: #fff;
+  --hd-shadow: rgb(0 0 0 / 10%);
+
   // font
   --font-h1: 40px;
   --font-h2: 32px;
@@ -94,14 +94,15 @@
   --hd-bg-1: #141414;
   --hd-bg-50: #393a3c;
   --hd-popper-bg: #393a3c;
-  --el-text-color-primary: #ffffff;
-  --hd-shadow: rgba(255, 255, 255, 0.323);
+  --el-text-color-primary: #fff;
+  --hd-shadow: rgb(255 255 255 / 32.3%);
   --el-mask-color: color-mix(in srgb, var(--hd-white) 30%, transparent);
+
   // --el-text-color-regular: #ffffff;
 }
 
 .center {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
