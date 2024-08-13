@@ -2,6 +2,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { loadEnv, type ConfigEnv, type UserConfigExport } from 'vite'
 import { setupPlugins } from './vite/plugins'
 import { __APP_INFO__ } from './vite/build/utils'
+import { include, exclude } from './vite/plugins/optimize'
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
@@ -10,6 +11,11 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
 
   return {
     plugins: [...setupPlugins()],
+    // https://cn.vitejs.dev/config/dep-optimization-options.html#dep-optimization-options
+    optimizeDeps: {
+      include,
+      exclude,
+    },
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
