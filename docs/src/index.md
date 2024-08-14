@@ -15,7 +15,7 @@ hero:
       link: /guide/introduction
     - theme: alt
       text: 在線預覽
-      link: /
+      link: https://hao-admin.vercel.app
 
 # features:
 #   - title: Feature A
