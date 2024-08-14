@@ -10,7 +10,7 @@
     <template #button>
       <div class="flex items-center justify-between gap-4">
         <el-checkbox v-model="state.data.rememberMe" label="記住我" class="text-black" />
-        <Anchor :to="{ path: '/' }" class="text-hd-link" hover>忘記密碼？</Anchor>
+        <Anchor :to="{ name: 'forget-password' }" class="text-hd-link" hover>忘記密碼？</Anchor>
       </div>
     </template>
   </FormLogin>
@@ -37,12 +37,12 @@ const verify = ref({
 const state = reactive({
   // 登入表單
   formColumns: [
-    { label: '帳號', prop: 'account', placeholder: '請輸入帳號', inputOptions: { icon: 'user' } },
+    { label: '帳號', prop: 'account', placeholder: 'hao', inputOptions: { icon: 'user' } },
     {
       label: '密碼',
       prop: 'password',
       type: 'password',
-      placeholder: '請輸入密碼',
+      placeholder: '123456',
       inputOptions: { icon: 'password' },
     },
     appConfig.login.captchaType == 'image'

@@ -198,6 +198,7 @@ interface IFormColumns {
     | 'address'
     | 'tag'
     | 'seo'
+    | 'verify'
   /**
    * @description: 是否隱藏欄位
    */

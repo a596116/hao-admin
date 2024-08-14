@@ -19,6 +19,12 @@ export const routes = [
         component: () => import('@/views/Auth/Login.vue'),
         meta: { guest: true, menu: { title: '登入', hiddenMenu: true, hiddenHistory: true } },
       },
+      {
+        path: '/auth/forget-password',
+        name: 'forget-password',
+        component: () => import('@/views/Auth/ForgetPassword.vue'),
+        meta: { guest: true, menu: { title: '忘記密碼', hiddenMenu: true, hiddenHistory: true } },
+      },
     ],
   },
   {

@@ -4,8 +4,8 @@
       ref="FormRef"
       :model="model"
       :rules="rules"
-      label-position="top"
-      class="flex flex-col gap-4"
+      label-position="left"
+      class="flex flex-col gap-5"
       :hide-required-asterisk="true">
       <motion :delay="100">
         <div class="title flex flex-col items-center gap-1">
@@ -17,9 +17,15 @@
       </motion>
       <motion v-for="(f, index) of fields" :key="f.prop" :delay="150 + 50 * index" class="w-full">
         <el-form-item :prop="f.prop" :label="f.label" :error="errors[f.prop]" class="text-hd-text">
+          <template v-if="f.formatter">
+            <div class="h-10 w-full">
+              <slot :name="f.prop" />
+            </div>
+          </template>
           <el-input
-            v-if="f.prop !== 'captcha'"
+            v-else-if="f.prop !== 'captcha'"
             v-model.trim="model[f.prop]"
+            class="h-10"
             :placeholder="f.placeholder"
             clearable
             :show-password="f.type == 'password'"
@@ -35,14 +41,14 @@
               :placeholder="f.placeholder"
               clearable
               maxlength="4"
-              class="!w-1/2"
+              class="h-10 !w-1/2"
               @keyup.enter="emit('submit', FormRef)" />
             <div class="w-1/2" @click="emit('on-refresh-captcha')" v-html="captcha.img" />
           </div>
         </el-form-item>
       </motion>
 
-      <motion :delay="150 + 50 * fields.length" class="w-full">
+      <motion v-if="$slots['button']" :delay="150 + 50 * fields.length" class="w-full">
         <slot name="button" />
       </motion>
 
@@ -50,13 +56,18 @@
         <el-form-item class="relative">
           <el-button
             type="primary"
-            class="relative w-full rounded-md border-none px-[50px] py-[8px] font-black text-white"
+            class="relative h-10 w-full rounded-md border-none px-[50px] py-[8px] font-black text-white"
             @click="emit('submit', FormRef)">
             {{ submitTitle || '登入' }}
           </el-button>
-          <span class="my-2 w-full text-center text-hd-success">
+          <span v-show="!isEmpty(alterText)" class="my-2 w-full text-center text-hd-success">
             {{ alterText }}
           </span>
+        </el-form-item>
+      </motion>
+
+      <motion v-if="$slots['submit_button']" :delay="150 + 50 * (fields.length + 2)" class="w-full">
+        <el-form-item class="relative">
           <slot name="submit_button" />
         </el-form-item>
       </motion>
@@ -66,8 +77,10 @@
 
 <script setup lang="ts">
 import { appConfig } from '@/app.config'
+import { useCommonStore } from '@/stores/common'
 import motion from '@/utils/motion'
 import type { FormInstance } from 'element-plus'
+import { isEmpty } from 'lodash-es'
 
 // ----------- props ----------
 const props = defineProps<{
@@ -90,6 +103,13 @@ const emit = defineEmits<{
 const FormRef = ref<FormInstance>()
 
 const errors = ref({})
+
+const immediateDebounce: any = useThrottleFn((formRef) => emit('submit', formRef), 1000)
+
+useEventListener(document, 'keypress', ({ code }) => {
+  if (['Enter', 'NumpadEnter'].includes(code) && !useCommonStore().loading)
+    immediateDebounce(FormRef.value)
+})
 </script>
 
 <style scoped lang="scss">

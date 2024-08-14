@@ -2,20 +2,22 @@
   @apply text-hd-text;
 }
 .el-button--default {
-  background-color: var(--hd-bg-1);
+  // background-color: var(--hd-bg-1) !important;
+  background-color: transparent !important;
   &:hover,
   &:focus {
-    background-color: color-mix(in srgb, var(--hd-bg-1) 80%, transparent);
-    border: 1px solid var(--hd-primary-hover);
+    background-color: color-mix(in srgb, var(--hd-bg-1) 10%, transparent) !important;
+    color: var(--hd-primary-hover) !important;
+    border: 1px solid var(--hd-primary-hover) !important;
   }
 }
 // primary
 .el-button--primary {
   @apply text-white;
-  background-color: var(--el-color-primary);
+  background-color: var(--el-color-primary) !important;
   &:hover,
   &:focus {
-    background-color: color-mix(in srgb, var(--el-color-primary) 80%, transparent);
+    background-color: color-mix(in srgb, var(--el-color-primary) 80%, transparent) !important;
   }
 
   &.is-plain:hover {
@@ -29,10 +31,10 @@
 // success
 .el-button--success {
   @apply text-white;
-  background-color: var(--el-color-success);
+  background-color: var(--el-color-success) !important;
   &:hover,
   &:focus {
-    background-color: color-mix(in srgb, var(--el-color-success) 80%, transparent);
+    background-color: color-mix(in srgb, var(--el-color-success) 80%, transparent) !important;
   }
 
   &.is-plain:hover {
@@ -46,10 +48,10 @@
 // warning
 .el-button--warning {
   @apply text-white;
-  background-color: var(--el-color-warning);
+  background-color: var(--el-color-warning) !important;
   &:hover,
   &:focus {
-    background-color: color-mix(in srgb, var(--el-color-warning) 80%, transparent);
+    background-color: color-mix(in srgb, var(--el-color-warning) 80%, transparent) !important;
   }
 
   &.is-plain:hover {
@@ -63,10 +65,10 @@
 // danger
 .el-button--danger {
   @apply text-white;
-  background-color: var(--el-color-danger);
+  background-color: var(--el-color-danger) !important;
   &:hover,
   &:focus {
-    background-color: color-mix(in srgb, var(--el-color-danger) 80%, transparent);
+    background-color: color-mix(in srgb, var(--el-color-danger) 80%, transparent) !important;
   }
 
   &.is-plain:hover {
@@ -80,10 +82,10 @@
 // info
 .el-button--info {
   @apply text-white;
-  background-color: var(--el-color-info);
+  background-color: var(--el-color-info) !important;
   &:hover,
   &:focus {
-    background-color: color-mix(in srgb, var(--el-color-info) 80%, transparent);
+    background-color: color-mix(in srgb, var(--el-color-info) 80%, transparent) !important;
   }
 
   &.is-plain:hover {
