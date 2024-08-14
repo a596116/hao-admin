@@ -9,7 +9,7 @@
           class="block" />
       </div>
     </div>
-    <div class="form-wrapper animate__animated animate__slideInRight">
+    <div class="form-wrapper">
       <router-view #default="{ Component }">
         <Transition appear name="fade-slide" mode="out-in">
           <component :is="Component" class="center absolute h-full w-full p-10" />

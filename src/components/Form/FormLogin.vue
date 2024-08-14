@@ -7,61 +7,66 @@
       label-position="top"
       class="flex flex-col gap-4"
       :hide-required-asterisk="true">
-      <div class="title flex flex-col items-center gap-1">
-        <SvgIcon name="logo" class="h-[70px] w-[70px]" />
-        <h1 class="">
-          {{ title || appConfig.title.toLocaleUpperCase() }}
-        </h1>
-      </div>
-      <el-form-item
-        v-for="f of fields"
-        :key="f.prop"
-        :prop="f.prop"
-        :label="f.label"
-        :error="errors[f.prop]"
-        class="text-hd-text">
-        <el-input
-          v-if="f.prop !== 'captcha'"
-          v-model.trim="model[f.prop]"
-          :placeholder="f.placeholder"
-          clearable
-          :show-password="f.type == 'password'"
-          @keyup.enter="emit('submit', FormRef)">
-          <template v-if="f.inputOptions?.icon" #prefix>
-            <SvgIcon :name="f.inputOptions?.icon" class="h-4 w-4 text-hd-text-50 opacity-80" />
-          </template>
-        </el-input>
-
-        <div v-else class="flex w-full items-center justify-center gap-4">
+      <motion :delay="100">
+        <div class="title flex flex-col items-center gap-1">
+          <SvgIcon name="logo" class="h-[70px] w-[70px]" />
+          <h1 class="">
+            {{ title || appConfig.title.toLocaleUpperCase() }}
+          </h1>
+        </div>
+      </motion>
+      <motion v-for="(f, index) of fields" :key="f.prop" :delay="150 + 50 * index" class="w-full">
+        <el-form-item :prop="f.prop" :label="f.label" :error="errors[f.prop]" class="text-hd-text">
           <el-input
+            v-if="f.prop !== 'captcha'"
             v-model.trim="model[f.prop]"
             :placeholder="f.placeholder"
             clearable
-            maxlength="4"
-            class="!w-1/2"
-            @keyup.enter="emit('submit', FormRef)" />
-          <div class="w-1/2" @click="emit('on-refresh-captcha')" v-html="captcha.img" />
-        </div>
-      </el-form-item>
-      <slot name="button" />
-      <el-form-item class="relative">
-        <el-button
-          type="primary"
-          class="relative w-full rounded-md border-none px-[50px] py-[8px] font-black text-white"
-          @click="emit('submit', FormRef)">
-          {{ submitTitle || '登入' }}
-        </el-button>
-        <span class="my-2 w-full text-center text-hd-success">
-          {{ alterText }}
-        </span>
-        <slot name="submit_button" />
-      </el-form-item>
+            :show-password="f.type == 'password'"
+            @keyup.enter="emit('submit', FormRef)">
+            <template v-if="f.inputOptions?.icon" #prefix>
+              <SvgIcon :name="f.inputOptions?.icon" class="h-4 w-4 text-hd-text-50 opacity-80" />
+            </template>
+          </el-input>
+
+          <div v-else class="flex w-full items-center justify-center gap-4">
+            <el-input
+              v-model.trim="model[f.prop]"
+              :placeholder="f.placeholder"
+              clearable
+              maxlength="4"
+              class="!w-1/2"
+              @keyup.enter="emit('submit', FormRef)" />
+            <div class="w-1/2" @click="emit('on-refresh-captcha')" v-html="captcha.img" />
+          </div>
+        </el-form-item>
+      </motion>
+
+      <motion :delay="150 + 50 * fields.length" class="w-full">
+        <slot name="button" />
+      </motion>
+
+      <motion :delay="150 + 50 * (fields.length + 1)" class="w-full">
+        <el-form-item class="relative">
+          <el-button
+            type="primary"
+            class="relative w-full rounded-md border-none px-[50px] py-[8px] font-black text-white"
+            @click="emit('submit', FormRef)">
+            {{ submitTitle || '登入' }}
+          </el-button>
+          <span class="my-2 w-full text-center text-hd-success">
+            {{ alterText }}
+          </span>
+          <slot name="submit_button" />
+        </el-form-item>
+      </motion>
     </el-form>
   </div>
 </template>
 
 <script setup lang="ts">
 import { appConfig } from '@/app.config'
+import motion from '@/utils/motion'
 import type { FormInstance } from 'element-plus'
 
 // ----------- props ----------
