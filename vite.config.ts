@@ -24,16 +24,16 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     },
     build: {
       rollupOptions: {
-        output: {
-          entryFileNames: `assets/[name].js`,
-          chunkFileNames: `assets/[name].js`,
-          assetFileNames: `assets/[name].[ext]`,
-          manualChunks(id: string) {
-            if (id.includes('node_modules')) {
-              return id.toString().split('node_modules/')[1].split('/')[0].toString()
-            }
-          },
-        },
+        // output: {
+        //   entryFileNames: `assets/[name].js`,
+        //   chunkFileNames: `assets/[name].js`,
+        //   assetFileNames: `assets/[name].[ext]`,
+        //   manualChunks(id: string) {
+        //     if (id.includes('node_modules')) {
+        //       return id.toString().split('node_modules/')[1].split('/')[0].toString()
+        //     }
+        //   },
+        // },
       },
       cssCodeSplit: true,
       chunkSizeWarningLimit: 4000,
