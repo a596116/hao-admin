@@ -222,9 +222,6 @@ importers:
       vue-tsc:
         specifier: ^2.0.21
         version: 2.0.29(typescript@5.4.5)
-      vue3-cookies:
-        specifier: ^1.0.6
-        version: 1.0.6(typescript@5.4.5)
       vue3-lottie:
         specifier: ^3.3.0
         version: 3.3.0(vue@3.4.37(typescript@5.4.5))
@@ -5048,9 +5045,6 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
-
-  vue3-cookies@1.0.6:
-    resolution: {integrity: sha512-a1UvVD0qIgxyOqjlSOwnLnqAnz8ASltugEv8yX+96i/WGZAN9fEDci7xO4HIWZE1uToUnRq9JnFhvfDCSo45OA==}
 
   vue3-lottie@3.3.0:
     resolution: {integrity: sha512-Omv26YN3e78fh0QgQooeZcmPo8O2j5mJ5pacZh1mGdHH9ZTGayWlY1Yp6h+wAvfBKAvJ80JXrSgeBOKA4MRBYA==}
@@ -10525,12 +10519,6 @@ snapshots:
       '@vue/language-core': 2.0.29(typescript@5.4.5)
       semver: 7.6.3
       typescript: 5.4.5
-
-  vue3-cookies@1.0.6(typescript@5.4.5):
-    dependencies:
-      vue: 3.4.37(typescript@5.4.5)
-    transitivePeerDependencies:
-      - typescript
 
   vue3-lottie@3.3.0(vue@3.4.37(typescript@5.4.5)):
     dependencies:

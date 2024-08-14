@@ -24,6 +24,7 @@
           v-if="f.prop !== 'captcha'"
           v-model.trim="model[f.prop]"
           :placeholder="f.placeholder"
+          clearable
           :show-password="f.type == 'password'"
           @keyup.enter="emit('submit', FormRef)">
           <template v-if="f.inputOptions?.icon" #prefix>

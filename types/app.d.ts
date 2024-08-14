@@ -36,6 +36,13 @@ declare namespace App {
         /** 驗證碼類型 圖片 滑塊 無 */
         captchaType: 'image' | 'slider' | null
       }
+      password: {
+        length: [number, number]
+        includeUppercase: boolean
+        includeLowercase: boolean
+        includeNumber: boolean
+        includeSpecialChar: boolean
+      }
     }
 
     interface ThemeColor extends OtherColor {

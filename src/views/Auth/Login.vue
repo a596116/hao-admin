@@ -1,7 +1,7 @@
 <template>
   <FormLogin
-    v-model:model="state.loginForm"
-    :fields="state.authLoginColumns"
+    v-model:model="state.data"
+    :fields="state.formColumns"
     :rules="loginRules"
     class="w-full"
     :captcha="state.captcha"
@@ -9,7 +9,7 @@
     @on-refresh-captcha="actions.handleFetchCaptcha(state.captcha.key)">
     <template #button>
       <div class="flex items-center justify-between gap-4">
-        <el-checkbox v-model="state.loginForm.rememberMe" label="記住我" class="text-black" />
+        <el-checkbox v-model="state.data.rememberMe" label="記住我" class="text-black" />
         <Anchor :to="{ path: '/' }" class="text-hd-link" hover>忘記密碼？</Anchor>
       </div>
     </template>
@@ -22,6 +22,7 @@ import CryptoJS from 'crypto-js'
 import { isEmpty } from 'lodash-es'
 import { appConfig } from '@/app.config'
 import { useAuthStore } from '@/stores/authStore'
+import { validatePassword } from '@/utils/formValidate'
 
 const authStore = useAuthStore()
 const route = useRoute()
@@ -35,7 +36,7 @@ const verify = ref({
 
 const state = reactive({
   // 登入表單
-  authLoginColumns: [
+  formColumns: [
     { label: '帳號', prop: 'account', placeholder: '請輸入帳號', inputOptions: { icon: 'user' } },
     {
       label: '密碼',
@@ -50,7 +51,7 @@ const state = reactive({
   ].filter((r) => !isEmpty(r)) as IFormColumns[],
 
   // 登入表單
-  loginForm: {
+  data: {
     account: '',
     password: '',
     rememberMe: false,
@@ -67,41 +68,47 @@ const state = reactive({
 // ----------- Rules ----------
 const loginRules = reactive<FormRules>({
   account: [{ required: true, message: '請輸入帳號', trigger: 'change' }],
-  password: [],
+  password: [{ required: true, validator: validatePassword, trigger: 'change' }],
 })
 
 onMounted(() => {
   getCookie()
   actions.handleFetchCaptcha()
   if (route.query.u) {
-    state.loginForm.account = String(route.query.u).split(',')[0]
-    state.loginForm.password = String(route.query.u).split(',')[1]
+    state.data.account = String(route.query.u).split(',')[0]
+    state.data.password = String(route.query.u).split(',')[1]
   }
 })
 
+/*
+ * @description: 從authStore取得cookie資料
+ */
 const getCookie = () => {
   const {
     account: storeAccount,
     password: storePassword,
     rememberMe: storeRememberMe,
   } = authStore.rememberUser
-  const { account, password, rememberMe } = state.loginForm
+  const { account, password, rememberMe } = state.data
 
   let decryptedPassword = ''
   if (storePassword) {
-    const decrypted = CryptoJS.AES.decrypt(storePassword, 'haodai')
+    const decrypted = CryptoJS.AES.decrypt(storePassword, 'hao')
     decryptedPassword = JSON.parse(CryptoJS.enc.Utf8.stringify(decrypted))
   }
-  state.loginForm = {
+  state.data = {
     account: storeAccount ? storeAccount : account,
     password: decryptedPassword ? decryptedPassword : password,
     rememberMe: storeRememberMe ? Boolean(storeRememberMe) : rememberMe,
     captcha: '',
   }
 }
+/*
+ * @description: 設定cookie資料
+ */
 const setCookie = (account: string, password: string, rememberMe: any) => {
   if (rememberMe) {
-    const encryptPassword = CryptoJS.AES.encrypt(JSON.stringify(password), 'haodai').toString()
+    const encryptPassword = CryptoJS.AES.encrypt(JSON.stringify(password), 'hao').toString()
     authStore.rememberUser = {
       account,
       password: encryptPassword,
@@ -117,11 +124,14 @@ const setCookie = (account: string, password: string, rememberMe: any) => {
 }
 const actions = {
   handleSubmit: async (formEl: FormInstance | undefined) => {
-    console.log()
+    await formEl?.validate((valid: boolean) => {
+      if (valid) {
+      }
+    })
   },
 
   /**
-   * @description 取得Captcha驗證碼
+   * @description 取得Captcha圖片驗證碼
    */
   handleFetchCaptcha: (id?: string) => {
     if (appConfig.login.captchaType !== 'image') return

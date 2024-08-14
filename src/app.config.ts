@@ -26,4 +26,18 @@ export const appConfig: App.Theme.AppSetting = {
     /** 驗證碼類型 圖片 滑塊 無 */
     captchaType: null,
   },
+
+  /** 密碼規則 */
+  password: {
+    /** 密碼長度 */
+    length: [8, 15],
+    /** 密碼是否包含大寫英文 */
+    includeUppercase: true,
+    /** 密碼是否包含小寫英文 */
+    includeLowercase: true,
+    /** 密碼是否包含數字 */
+    includeNumber: true,
+    /** 密碼是否包含特殊字符 */
+    includeSpecialChar: true,
+  },
 }
