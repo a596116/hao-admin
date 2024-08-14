@@ -3,10 +3,7 @@
     <LoginBg />
     <div class="introduce">
       <div class="introduce-content">
-        <Vue3Lottie
-          animationLink="https://lottie.host/e3e52f0b-652c-4485-95db-e84eb80f1160/TXpyjvxsVV.json"
-          width="500px"
-          class="block" />
+        <Vue3Lottie :animationLink="appConfig.login.logo" width="500px" class="block" />
       </div>
     </div>
     <div class="form-wrapper">
@@ -19,7 +16,9 @@
   </main>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { appConfig } from '@/app.config'
+</script>
 
 <style scoped lang="scss">
 main {

@@ -23,6 +23,8 @@ export const appConfig: App.Theme.AppSetting = {
     showFullScreenBar: true,
   },
   login: {
+    /** 登入頁面 Logo 圖片，可從 https://lottiefiles.com/featured 獲取 */
+    logo: 'https://lottie.host/e3e52f0b-652c-4485-95db-e84eb80f1160/TXpyjvxsVV.json',
     /** 驗證碼類型 圖片 滑塊 無 */
     captchaType: null,
   },

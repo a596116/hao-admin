@@ -33,6 +33,8 @@ declare namespace App {
         showFullScreenBar: boolean
       }
       login: {
+        /** 登入頁面 Logo 圖片 */
+        logo: string
         /** 驗證碼類型 圖片 滑塊 無 */
         captchaType: 'image' | 'slider' | null
       }
