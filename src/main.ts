@@ -9,7 +9,7 @@ import { MotionPlugin } from '@vueuse/motion'
 async function main() {
   const app = createApp(App)
   setupPlugins(app)
-  app.use(router).use(MotionPlugin)
+  app.use(MotionPlugin)
   setupRouter(app)
 
   await router.isReady()
