@@ -2,11 +2,15 @@ import type { IRouteModule } from 'types/router'
 import type { RouteRecordRaw } from 'vue-router'
 import router from '.'
 
+/**
+ * @description: 產生完整路由配置
+ * @param {IRouteModule} routes
+ */
 export const generateRoutes = (routes: IRouteModule[]) => {
   const res = [] as RouteRecordRaw[]
   let modules = import.meta.glob('../views/**/*.vue')
   routes.forEach((route) => {
-    const r = <any>{}
+    const r = {} as any
     const { children, page } = route
     r.path = `${page.name.toLocaleLowerCase()}`
     r.name = page.name
@@ -29,7 +33,7 @@ export const generateRoutes = (routes: IRouteModule[]) => {
 /**
  * @description: 自動從module文件夾中導入路由
  */
-const autoloadModuleRoutes = () => {
+export const autoloadModuleRoutes = () => {
   const modules: Record<
     string,
     {
@@ -43,6 +47,14 @@ const autoloadModuleRoutes = () => {
   return generateRoutes(routes)
 }
 
-export default async () => {
-  autoloadModuleRoutes()
+export const resetRouter = () => {
+  const resetWhiteNameList = ['/auth/login', '/auth/forget-password', '/auth/reset-password']
+  router.getRoutes().forEach((route) => {
+    const { path } = route
+    if (resetWhiteNameList.includes(path as string)) {
+      if (route.name) {
+        router.removeRoute(route.name)
+      }
+    }
+  })
 }

@@ -40,6 +40,6 @@ export const appConfig: App.Theme.AppSetting = {
     /** 密碼是否包含數字 */
     includeNumber: true,
     /** 密碼是否包含特殊字符 */
-    includeSpecialChar: true,
+    includeSpecialChar: false,
   },
 }

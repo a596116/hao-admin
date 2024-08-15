@@ -21,7 +21,7 @@ import type { FormInstance, FormRules } from 'element-plus'
 import CryptoJS from 'crypto-js'
 import { isEmpty } from 'lodash-es'
 import { appConfig } from '@/app.config'
-import { useAuthStore } from '@/stores/authStore'
+import { ILoginUser, useAuthStore } from '@/stores/authStore'
 import { validatePassword } from '@/utils/formValidate'
 
 const authStore = useAuthStore()
@@ -42,7 +42,7 @@ const state = reactive({
       label: '密碼',
       prop: 'password',
       type: 'password',
-      placeholder: '123456',
+      placeholder: 'Aa123456',
       inputOptions: { icon: 'password' },
     },
     appConfig.login.captchaType == 'image'
@@ -52,11 +52,11 @@ const state = reactive({
 
   // 登入表單
   data: {
-    account: '',
-    password: '',
+    account: 'hao',
+    password: 'Aa123456',
     rememberMe: false,
     captcha: '',
-  },
+  } as ILoginUser,
   captcha: {
     img: '',
     key: '',
@@ -126,6 +126,16 @@ const actions = {
   handleSubmit: async (formEl: FormInstance | undefined) => {
     await formEl?.validate((valid: boolean) => {
       if (valid) {
+        const { rememberMe, account, password } = state.data
+        const params = {
+          ...state.data,
+        }
+        if (appConfig.login.captchaType == 'image') {
+          params.key = state.captcha.key
+        }
+        authStore.loginAuth(params).then((res) => {
+          setCookie(account, password, rememberMe)
+        })
       }
     })
   },
