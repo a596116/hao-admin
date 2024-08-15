@@ -26,6 +26,7 @@ export const setupRouter = async (app: App) => {
   if (token) {
     await useAuthStore().getUserInfo()
   }
+
   guard(router)
   app.use(router)
 }
