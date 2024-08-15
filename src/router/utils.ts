@@ -48,13 +48,7 @@ export const autoloadModuleRoutes = () => {
 }
 
 export const resetRouter = () => {
-  const resetWhiteNameList = ['/auth/login', '/auth/forget-password', '/auth/reset-password']
-  router.getRoutes().forEach((route) => {
-    const { path } = route
-    if (resetWhiteNameList.includes(path as string)) {
-      if (route.name) {
-        router.removeRoute(route.name)
-      }
-    }
+  autoloadModuleRoutes().forEach((route) => {
+    router.removeRoute(route.name as string)
   })
 }

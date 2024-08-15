@@ -60,7 +60,6 @@ export const useAuthStore = defineStore(
       // 模擬登入
       storage.set(CacheEnum.TOKEN_NAME, 'admin-token')
       await getUserInfo()
-      console.log(router.getRoutes())
       const redirect_router =
         storage.get(CacheEnum.REDIRECT_ROUTE_NAME) !== 'notFound'
           ? storage.get(CacheEnum.REDIRECT_ROUTE_NAME) || '/'
@@ -79,10 +78,10 @@ export const useAuthStore = defineStore(
     const logoutAuth = () => {
       resetRouter()
       storage.remove(CacheEnum.TOKEN_NAME, CacheEnum.REDIRECT_ROUTE_NAME)
-      router.push('/login')
       notification.success({
         title: '退出登入',
       })
+      router.push('/auth/login')
     }
 
     return { user, rememberUser, user_funcs, getUserInfo, loginAuth, logoutAuth }
