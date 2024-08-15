@@ -1,5 +1,4 @@
-import { defineConfig } from 'vite'
-import { VitePWA, type VitePWAOptions } from 'vite-plugin-pwa'
+import { type VitePWAOptions } from 'vite-plugin-pwa'
 
 export const manifestForPlugin: Partial<VitePWAOptions> = {
   registerType: 'prompt',
@@ -24,7 +23,7 @@ export const manifestForPlugin: Partial<VitePWAOptions> = {
     orientation: 'portrait',
     icons: [
       {
-        src: '/logo.svg', // path to your app's logo
+        src: '/logo.png', // path to your app's logo
         sizes: '192x192',
         type: 'image/png',
         purpose: 'any maskable',
