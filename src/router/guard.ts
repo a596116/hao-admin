@@ -1,4 +1,5 @@
 import { CacheEnum } from '@/enum/cacheEnum'
+import { useErrorStore } from '@/stores/errorStore'
 import { getPageTitle } from '@/utils'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -19,7 +20,7 @@ class Guard {
    */
   private whiteList = ['/auth/login', '/auth/forget-password', '/auth/reset-password']
 
-  private async beforeEach(to: RouteLocationNormalized, _from: RouteLocationNormalized) {
+  private async beforeEach(to: RouteLocationNormalized, from: RouteLocationNormalized) {
     NProgress.start()
     document.title = getPageTitle(to.meta.menu?.title)
     /** 不再白名單內且沒有token，設置redirect路由並跳去登入頁 */
@@ -28,6 +29,9 @@ class Guard {
       return { name: 'login' }
     }
 
+    if (to.meta.guest && this.token()) return from
+
+    useErrorStore().resetError()
     // useMenuStore().permissionHandler(to)
   }
 

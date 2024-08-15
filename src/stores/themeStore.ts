@@ -30,7 +30,7 @@ export const useThemeStore = defineStore('theme-store', () => {
    */
   function updateThemeColors(color: string) {
     if (!color) {
-      settings.value.themeColor = settings.value.themeColor
+      settings.value.themeColor = settings.value.defaultThemeColor
     }
     changeThemeColors(color, settings.value.themeColor)
   }

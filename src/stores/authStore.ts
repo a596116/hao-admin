@@ -16,7 +16,7 @@ export interface ILoginUser {
 export const useAuthStore = defineStore(
   'auth-store',
   () => {
-    const user = ref({})
+    const user = ref<{ name: string; email: string }>()
     const user_funcs = ref<RouteRecordRaw[]>()
     const rememberUser = ref<{ account: string; password: string; rememberMe: boolean }>({
       account: '',
@@ -32,13 +32,14 @@ export const useAuthStore = defineStore(
         // 模擬獲取用戶信息
         user.value = {
           name: 'admin',
+          email: 'admin@gmail.com',
         }
         /** 是否自動加載module路由模快 */
         if (appConfig.autoImportRouter) {
-          autoloadModuleRoutes()
+          user_funcs.value = autoloadModuleRoutes()
         } else {
           // 從後端獲取用戶權限路由
-          // generateRoutes(router)
+          // user_funcs.value = generateRoutes(router)
         }
         resolve(user.value)
       })

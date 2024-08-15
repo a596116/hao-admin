@@ -1,6 +1,7 @@
 /** Default app settings */
 export const appConfig: App.Theme.AppSetting = {
   title: 'HaoAdmin',
+  defaultThemeColor: '#5352ed',
   themeColor: '#5352ed',
 
   /** 從 router/module 自動導入路由 */

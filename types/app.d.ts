@@ -10,6 +10,7 @@ declare namespace App {
     interface AppSetting {
       title: string
       /** Theme color */
+      defaultThemeColor: string
       themeColor: string
 
       /** 從 router/module 自動導入路由 */

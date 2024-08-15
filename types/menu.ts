@@ -4,6 +4,7 @@ interface Menu {
   hiddenHistory?: boolean
   icon?: string
   defaultPath?: string
+  route?: string
 }
 
 export interface IMenu extends Menu {

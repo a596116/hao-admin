@@ -99,14 +99,14 @@
 
 .custom-plain-button--green.is-disabled,
 .custom-plain-button--green.is-disabled:hover {
-  color: #cdecdc;
-  border-color: #cdecdc;
+  color: #cdecdc !important;
+  border-color: #cdecdc !important;
 }
 
 .custom-plain-button--primary.is-disabled,
 .custom-plain-button--primary.is-disabled:hover {
-  color: #b3dff4;
-  border-color: #b3dff4;
+  color: #b3dff4 !important;
+  border-color: #b3dff4 !important;
 }
 
 // -----懸浮動畫-----
