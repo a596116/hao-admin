@@ -63,6 +63,10 @@ export const useMenuStore = defineStore(
       })
     }
 
+    /**
+     * @description: 添加歷史菜單
+     * @param {RouteLocationNormalized} r
+     */
     const addHistoryMenu = (r: RouteLocationNormalized) => {
       if (!r.meta?.menu) return
       if (r.meta?.menu.hiddenHistory) return
@@ -71,7 +75,7 @@ export const useMenuStore = defineStore(
       const index = Object.entries(historyMenus.value!).findIndex(
         ([_key, value]: any) => value.route === r.path,
       )
-      if (index == -1) historyMenus.value.unshift(menu)
+      if (index == -1) historyMenus.value.push(menu)
       if (historyMenus.value.length > 10) historyMenus.value.pop()
       historyMenus.value = [...historyMenus.value]
     }
