@@ -2,8 +2,10 @@
   <div>
     <slot name="title" />
     <el-tooltip v-if="!isDropdown" effect="dark" content="偏好設定" placement="bottom-end">
-      <div class="hover-transition-bg rounded-lg p-1 leading-none">
-        <svg-icon name="setting" class="h-5 w-5" @click="themeSettingDrawer = true" />
+      <div
+        class="hover-transition-bg rounded-lg p-1 leading-none"
+        @click="themeSettingDrawer = true">
+        <svg-icon name="setting" class="h-5 w-5" />
       </div>
     </el-tooltip>
     <el-dropdown-item
