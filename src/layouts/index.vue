@@ -1,16 +1,12 @@
 <template>
   <div class="relative flex h-full w-full items-center gap-3 bg-hd-bg p-2 text-hd-dark max-sm:p-1">
     <!-- <Menu v-if="showMenu" /> -->
-    <div
-      class="content grid h-full w-full flex-1 grid-rows-[auto_1fr]"
-      :class="{
-        'grid-rows-[auto_auto_1fr]': menuStore.isHistoryCollapse,
-      }">
+    <div class="content flex h-full w-full flex-1 flex-col">
       <Header />
-      <!-- <NavBar />
-      <HistoryLink v-if="menuStore.isHistoryCollapse" /> -->
+      <Tabbar />
+
       <main
-        class="main relative max-h-full overflow-y-auto overflow-x-hidden rounded-xl"
+        class="main relative h-full max-h-full flex-1 overflow-y-auto overflow-x-hidden rounded-lg"
         :class="{
           'bg-hd-bg-1': !invisible_bg.includes(route.path),
         }">

@@ -117,6 +117,7 @@
     "vite-plugin-vue-devtools": "^7.3.1",
     "vitest": "^1.6.0",
     "vue-cropper": "^0.6.5",
+    "vue-draggable-plus": "^0.5.3",
     "vue-tsc": "^2.0.21",
     "vue3-lottie": "^3.3.0",
     "workbox-window": "^7.1.0",

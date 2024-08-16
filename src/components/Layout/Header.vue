@@ -1,6 +1,6 @@
 <template>
-  <main class="relative z-[18] mb-1 flex max-h-[50px] flex-col justify-center">
-    <div class="flex items-center justify-between overflow-hidden bg-transparent py-1">
+  <main class="max-h-[50px]1 relative z-[18] flex flex-col justify-center">
+    <div class="flex items-center justify-between overflow-hidden py-1">
       <div class="flex items-center justify-center gap-3">
         <section
           v-if="showMenu"
@@ -18,6 +18,8 @@
         <UserInfo />
       </div>
     </div>
+    <!-- <el-divider class="m-0" /> -->
+    <!-- <Tabbar /> -->
   </main>
 </template>
 

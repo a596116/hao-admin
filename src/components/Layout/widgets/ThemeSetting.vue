@@ -54,10 +54,10 @@
         <div class="flex w-full justify-between">
           <span class="center mx-3 text-base">顯示標籤欄</span>
           <el-switch
-            v-model="menuStore.isHistoryCollapse"
+            v-model="menuStore.isTabbarCollapse"
             class="ml-2"
             size="large"
-            @change="menuStore.toggleHistoryLink" />
+            @change="menuStore.toggleTabbar" />
         </div>
         <div class="flex w-full justify-between">
           <span class="center mx-3 text-base">顯示麵包屑</span>

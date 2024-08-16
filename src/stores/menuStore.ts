@@ -11,7 +11,7 @@ export const useMenuStore = defineStore(
     const historyMenus = ref<IMenu[]>([])
     const route = ref<RouteMeta | null>(null)
     const isMenuCollapse = ref<boolean>(false)
-    const isHistoryCollapse = ref<boolean>(false)
+    const isTabbarCollapse = ref<boolean>(true)
     const isBreadCrumb = ref<boolean>(true)
     const authStore = useAuthStore()
 
@@ -67,9 +67,9 @@ export const useMenuStore = defineStore(
       if (!r.meta?.menu) return
       if (r.meta?.menu.hiddenHistory) return
       route.value = r.meta
-      const menu: IMenu = { ...r.meta?.menu, route: r.name as string }
+      const menu: IMenu = { ...r.meta?.menu, route: r.path as string }
       const index = Object.entries(historyMenus.value!).findIndex(
-        ([_key, value]: any) => value.route === r.name,
+        ([_key, value]: any) => value.route === r.path,
       )
       if (index == -1) historyMenus.value.unshift(menu)
       if (historyMenus.value.length > 10) historyMenus.value.pop()
@@ -119,10 +119,10 @@ export const useMenuStore = defineStore(
     }
 
     /**
-     * @description: 開關歷史菜單
+     * @description: 開關標籤欄
      */
-    const toggleHistoryLink = () => {
-      isHistoryCollapse.value = isHistoryCollapse.value
+    const toggleTabbar = () => {
+      isTabbarCollapse.value = isTabbarCollapse.value
     }
 
     /**
@@ -153,11 +153,11 @@ export const useMenuStore = defineStore(
       historyMenus,
       route,
       isMenuCollapse,
-      isHistoryCollapse,
+      isTabbarCollapse,
       isBreadCrumb,
       init,
       toggleMenu,
-      toggleHistoryLink,
+      toggleTabbar,
       toggleBreadCrumb,
       addHistoryMenu,
       removeHistoryMenu,

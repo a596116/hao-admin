@@ -140,3 +140,20 @@
     }
   }
 }
+
+// =================slide-left===================
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+.slide-left-move {
+  transition: transform 0.3s;
+}
+
+.slide-left-enter-from,
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translate(-15px);
+}
+//================================================

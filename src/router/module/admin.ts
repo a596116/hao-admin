@@ -21,5 +21,15 @@ export default {
         number: 1,
       },
     },
+    {
+      name: '/home/test',
+      path: '/test',
+      component: 'test',
+      meta: {
+        code: 'index',
+        menu: { title: 'test' },
+        number: 2,
+      },
+    },
   ],
 } as IRouteModule
