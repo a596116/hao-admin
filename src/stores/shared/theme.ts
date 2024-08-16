@@ -2,9 +2,6 @@ import { appConfig } from '@/app.config'
 import { getColorPalette } from '@/utils/color'
 
 const el: HTMLElement = document.documentElement
-const el1: HTMLElement = document.documentElement
-const el2: HTMLElement = document.documentElement
-const el3: HTMLElement = document.documentElement
 
 /** Init theme settings */
 export function initThemeSettings() {
@@ -33,17 +30,10 @@ export function initThemeSettings() {
     ...appConfig,
     themeColor: storage.get('themeColor') || appConfig.themeColor,
   }
-  getComputedStyle(el).getPropertyValue(`--hd-primary`)
-  el.style.setProperty('--hd-primary', settings.themeColor)
-  getComputedStyle(el1).getPropertyValue(`--hd-primary-hover`)
-  // el1.style.setProperty('--hd-primary-hover', getColorPalette(settings.themeColor, 3))
-  el1.style.setProperty('--hd-primary-hover', settings.themeColor + '95')
-  getComputedStyle(el2).getPropertyValue(`--el-color-primary`)
-  el2.style.setProperty('--el-color-primary', settings.themeColor)
-  getComputedStyle(el3).getPropertyValue(`--hd-primary-active`)
-
-  el1.style.setProperty('--hd-primary-active', settings.themeColor + '75')
-  // el3.style.setProperty('--hd-primary-active', getColorPalette(settings.themeColor, 4))
+  el.style.setProperty('--el-color-primary', getColorPalette(settings.themeColor, 6))
+  el.style.setProperty('--hd-primary', getColorPalette(settings.themeColor, 6))
+  el.style.setProperty('--hd-primary-hover', getColorPalette(settings.themeColor, 5))
+  el.style.setProperty('--hd-primary-active', getColorPalette(settings.themeColor, 7))
   return settings
 }
 
@@ -56,9 +46,9 @@ export const changeThemeColors = (color: string, defaultThemeColor: string) => {
   if (!color) {
     color = defaultThemeColor
   }
-  storage.set('themeColor', color || defaultThemeColor)
-  el.style.setProperty('--hd-primary', color || defaultThemeColor)
-  el1.style.setProperty('--hd-primary-hover', color || defaultThemeColor + '95')
-  el2.style.setProperty('--el-color-primary', color || defaultThemeColor)
-  el3.style.setProperty('--hd-primary-active', color || defaultThemeColor + '75')
+  storage.set('themeColor', getColorPalette(color, 6))
+  el.style.setProperty('--el-color-primary', getColorPalette(color, 6))
+  el.style.setProperty('--hd-primary', getColorPalette(color, 6))
+  el.style.setProperty('--hd-primary-hover', getColorPalette(color, 5))
+  el.style.setProperty('--hd-primary-active', getColorPalette(color, 7))
 }
