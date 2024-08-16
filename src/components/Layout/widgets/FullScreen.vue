@@ -2,10 +2,10 @@
   <div>
     <el-tooltip effect="dark" content="全螢幕" placement="bottom-end">
       <div
-        class="hover-transition-bg center hidden rounded-lg p-1 leading-none md:block"
+        class="hover-transition-bg center hidden rounded-lg p-1 leading-none text-hd-text md:block"
         @click="fullScreen">
-        <svg-icon v-if="isFullScreen" name="fullscreen-exit" class="h-5 w-5" />
-        <svg-icon v-else name="fullscreen" class="h-5 w-5" />
+        <svg-icon v-if="isFullScreen" name="fullscreen-exit" class="size-5" />
+        <svg-icon v-else name="fullscreen" class="size-5" />
       </div>
     </el-tooltip>
   </div>
