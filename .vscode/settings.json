@@ -1,0 +1,15 @@
+{
+  // 控制相关文件嵌套展示
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "$(capture).test.ts, $(capture).test.tsx, $(capture).spec.ts, $(capture).spec.tsx, $(capture).d.ts",
+    "*.tsx": "$(capture).test.ts, $(capture).test.tsx, $(capture).spec.ts, $(capture).spec.tsx,$(capture).d.ts",
+    "*.env": "$(capture).env.*",
+    "README.md": "README*,CHANGELOG*,LICENSE,CNAME",
+    "package.json": "pnpm-lock.yaml,pnpm-workspace.yaml,.gitattributes,.gitignore,.gitpod.yml,.npmrc,.browserslistrc,.node-version,.git*,.tazerc.json",
+    "Dockerfile": "Dockerfile,.docker*,docker-entrypoint.sh,build-local-docker*,nginx.conf",
+    "eslint.config.js": ".eslintignore,.prettierignore,.stylelintignore,commitlint.*,.prettierrc,stylelint.config.*,.lintstagedrc,.ls-lint*,cspell.json",
+    "tailwind.config.js": "postcss.*"
+  }
+}
