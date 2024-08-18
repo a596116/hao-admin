@@ -33,7 +33,7 @@ async function close() {
       <span class="text-sm"> 點擊刷新按鈕獲取最新版本 </span>
     </div>
 
-    <el-button type="primary" @click="updateServiceWorker()">刷新</el-button>
+    <el-button type="primary" @click.stop="updateServiceWorker()">刷新</el-button>
     <el-button type="default" plain @click="close">關閉</el-button>
   </div>
   <!-- <div v-show="offlineReady || needRefresh" class="pwa-toast" role="alert">
