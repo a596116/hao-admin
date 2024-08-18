@@ -40,6 +40,7 @@ export const useThemeStore = defineStore('theme-store', () => {
    */
   const toggleCssDarkMode = (val: string) => {
     isDark.value = val === 'dark'
+    osTheme.value.mode = val
   }
 
   /** On scope dispose */
@@ -49,6 +50,7 @@ export const useThemeStore = defineStore('theme-store', () => {
 
   return {
     ...toRefs(settings.value),
+    isDark,
     osTheme,
     resetStore,
     updateThemeColors,

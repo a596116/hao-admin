@@ -86,3 +86,24 @@ a {
 hr {
   border-color: var(--hd-border);
 }
+
+::view-transition-new(root),
+::view-transition-old(root) {
+  @apply animate-none mix-blend-normal;
+}
+
+::view-transition-old(root) {
+  @apply z-[1];
+}
+
+::view-transition-new(root) {
+  @apply z-[2147483646];
+}
+
+html.dark::view-transition-old(root) {
+  @apply z-[2147483646];
+}
+
+html.dark::view-transition-new(root) {
+  @apply z-[1];
+}

@@ -14,6 +14,7 @@
 
       <div class="flex items-center justify-center gap-3">
         <FullScreen v-if="showFullScreen" />
+        <ThemeButton />
         <ThemeSetting v-if="showThemeSetting" class="max-sm:hidden" />
         <UserInfo />
       </div>
