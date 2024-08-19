@@ -24,9 +24,11 @@
       append-to-body>
       <div class="flex flex-col justify-center gap-3 px-2 text-lg text-hd-dark">
         <div class="">
-          <el-divider>
-            <span class="mx-2 font-medium">主題模式</span>
-          </el-divider>
+          <div class="px-2">
+            <el-divider>
+              <span class="mx-2 font-medium">主題模式</span>
+            </el-divider>
+          </div>
           <section class="center w-full">
             <el-segmented
               v-model="themeStore.osTheme.mode"
@@ -52,6 +54,12 @@
             v-model="themeStore.themeColor"
             :predefine="themeColorList"
             @change="themeStore.updateThemeColors" />
+        </div>
+
+        <div class="px-2">
+          <el-divider>
+            <span class="mx-2 font-medium">佈局</span>
+          </el-divider>
         </div>
         <div class="flex w-full justify-between">
           <span class="center mx-3 text-base">顯示標籤欄</span>

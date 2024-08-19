@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import defaultTheme from 'tailwindcss/defaultTheme'
+import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
@@ -96,7 +98,6 @@ module.exports = {
           white: 'var(--hd-white)',
           'white-50': 'var(--hd-white-50)',
           'black-50': 'var(--hd-black-50)',
-          'white-50': 'var(--hd-white-50)',
           disable: 'var(--hd-disable)',
           border: 'var(--hd-border)',
           bg: 'var(--hd-bg)',
@@ -115,4 +116,34 @@ module.exports = {
       },
     },
   },
-}
+  plugins: [
+    plugin(function ({ addComponents }) {
+      const hoverTransitionBg = {
+        '.hover-transition-bg': {
+          '@apply relative cursor-pointer': {},
+          '&::before': {
+            '@apply absolute left-0 top-0 z-0 h-full w-full': {},
+            'z-index': '1',
+            'pointer-events': 'none',
+            content: '""',
+            'background-color': 'color-mix(in srgb, var(--primary-text-color) 10%, transparent)',
+            'border-radius': 'inherit',
+            opacity: '0',
+            transition: 'all 0.25s ease',
+            transform: 'scale(0.5)',
+          },
+          '@media (hover: hover)': {
+            '&:hover::before': {
+              opacity: '1',
+              transform: 'scale(1)',
+            },
+          },
+        },
+      }
+      addComponents(hoverTransitionBg)
+    }),
+    plugin(function ({ addVariant }) {
+      addVariant('hover-hover', '@media (hover: hover)')
+    }),
+  ],
+} satisfies Config

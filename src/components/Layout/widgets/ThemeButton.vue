@@ -1,5 +1,5 @@
 <template>
-  <button class="hover-transition-bg center rounded-lg p-1 leading-none" @click.stop="toggleTheme">
+  <button class="center hover-transition-bg rounded-lg p-1 leading-none" @click.stop="toggleTheme">
     <SvgIcon :name="isDark ? 'sun' : 'moon'" class="size-5 fill-hd-text text-hd-text" />
   </button>
 </template>
