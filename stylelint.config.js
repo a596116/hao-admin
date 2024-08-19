@@ -25,6 +25,7 @@ export default {
     'selector-class-pattern': null,
     'no-descending-specificity': null,
     'scss/dollar-variable-pattern': null,
+    'scss/operator-no-unspaced': null,
     'selector-pseudo-class-no-unknown': [
       true,
       {

@@ -16,6 +16,7 @@ const menuStore = useMenuStore()
 main > div {
   // box-shadow: 5px 5px 14px #a7aaad, -5px -5px 14px #ffffff;
 }
+
 .history::-webkit-scrollbar {
   display: none;
 }

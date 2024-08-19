@@ -52,6 +52,7 @@ const dropdownClick = (route: string) => {
 <style lang="scss" scoped>
 .breadcrumb {
   --el-text-color-regular: var(--hd-primary) !important;
+
   .el-breadcrumb__inner {
     color: var(--hd-primary) !important;
   }
@@ -63,6 +64,7 @@ const dropdownClick = (route: string) => {
   .el-breadcrumb__inner.is-link:hover {
     color: var(--hd-primary-hover) !important;
   }
+
   :deep(.el-breadcrumb__item) {
     height: 24px !important;
   }

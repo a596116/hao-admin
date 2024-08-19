@@ -50,8 +50,9 @@ const invisible_bg = ['/home/dashboard']
 }
 
 .mask {
-  z-index: 99;
   @apply absolute top-0 h-screen w-screen bg-hd-dark-50 opacity-20;
+
+  z-index: 99;
 
   &.close {
     @apply hidden;
