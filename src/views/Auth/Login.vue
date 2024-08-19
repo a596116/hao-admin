@@ -8,7 +8,7 @@
     @submit="actions.handleSubmit"
     @on-refresh-captcha="actions.handleFetchCaptcha(state.captcha.key)">
     <template #button>
-      <div class="flex items-center justify-between gap-4">
+      <div class="flex-bc gap-4">
         <el-checkbox v-model="state.data.rememberMe" label="記住我" class="text-black" />
         <Anchor :to="{ name: 'forget-password' }" class="text-hd-link" hover>忘記密碼？</Anchor>
       </div>

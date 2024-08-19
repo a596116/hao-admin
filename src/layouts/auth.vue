@@ -9,7 +9,7 @@
     <div class="form-wrapper">
       <router-view #default="{ Component }">
         <!-- <Transition appear name="fade-slide" mode="out-in"> -->
-        <component :is="Component" class="center absolute h-full w-full p-10" />
+        <component :is="Component" class="flex-c absolute h-full w-full p-10" />
         <!-- </Transition> -->
       </router-view>
     </div>
@@ -29,7 +29,7 @@ main {
   @apply relative h-full w-1/2 max-md:hidden;
 
   .introduce-content {
-    @apply flex h-full w-full items-center justify-center;
+    @apply flex-c h-full w-full;
 
     .tips {
       @apply text-3xl font-black;
@@ -38,6 +38,6 @@ main {
 }
 
 .form-wrapper {
-  @apply absolute right-0 box-border flex h-full w-1/2 items-center justify-center px-[10%] max-md:w-full;
+  @apply flex-c absolute right-0 box-border h-full w-1/2 px-[10%] max-md:w-full;
 }
 </style>

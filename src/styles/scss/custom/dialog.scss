@@ -21,7 +21,7 @@
 
   // 關閉按鈕
   .el-dialog__headerbtn {
-    @apply center;
+    @apply flex-c;
 
     // @apply center absolute -right-[10px] -top-[10px] z-[100] flex h-auto w-auto
     //   rounded-[12px] p-2 text-hd-dark-50 duration-150;

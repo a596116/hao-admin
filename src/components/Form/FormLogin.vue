@@ -35,7 +35,7 @@
             </template>
           </el-input>
 
-          <div v-else class="flex w-full items-center justify-center gap-4">
+          <div v-else class="flex-c w-full gap-4">
             <el-input
               v-model.trim="model[f.prop]"
               :placeholder="f.placeholder"

@@ -29,13 +29,13 @@
               <span class="mx-2 font-medium">主題模式</span>
             </el-divider>
           </div>
-          <section class="center w-full">
+          <section class="flex-c w-full">
             <el-segmented
               v-model="themeStore.osTheme.mode"
               :options="themeStore.osTheme.options"
               @change="themeStore.toggleCssDarkMode">
               <template #default="{ item }">
-                <div class="center px-4 py-2">
+                <div class="flex-c px-4 py-2">
                   <svg-icon
                     :name="item == 'light' ? 'sun' : 'moon'"
                     :class="{
@@ -49,7 +49,7 @@
           </section>
         </div>
         <div class="flex w-full justify-between">
-          <span class="center mx-3 text-base">主題顏色</span>
+          <span class="flex-c mx-3 text-base">主題顏色</span>
           <el-color-picker
             v-model="themeStore.themeColor"
             :predefine="themeColorList"
@@ -62,7 +62,7 @@
           </el-divider>
         </div>
         <div class="flex w-full justify-between">
-          <span class="center mx-3 text-base">顯示標籤欄</span>
+          <span class="flex-c mx-3 text-base">顯示標籤欄</span>
           <el-switch
             v-model="menuStore.isTabbarCollapse"
             class="ml-2"
@@ -70,7 +70,7 @@
             @change="menuStore.toggleTabbar" />
         </div>
         <div class="flex w-full justify-between">
-          <span class="center mx-3 text-base">顯示麵包屑</span>
+          <span class="flex-c mx-3 text-base">顯示麵包屑</span>
           <el-switch
             v-model="menuStore.isBreadCrumb"
             class="ml-2"

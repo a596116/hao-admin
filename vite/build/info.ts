@@ -7,7 +7,7 @@ import { getPackageSize } from './utils'
 dayjs.extend(duration)
 
 const welcomeMessage = gradientString('cyan', 'magenta').multiline(
-  `您好! 歡迎使用 hao-admin 後台管理系統\n以下是網站使用文檔\nhttps://docs.hao-admin.com`,
+  `您好! 歡迎使用 hao-admin 後台管理系統\n以下是網站使用文檔\nhttps://hao-doc.vercel.app`,
 )
 
 const boxenOptions: BoxenOptions = {

@@ -142,6 +142,25 @@ module.exports = {
       }
       addComponents(hoverTransitionBg)
     }),
+    plugin(function ({ addComponents }) {
+      addComponents({
+        '.flex-c': {
+          display: 'flex',
+          'justify-content': 'center',
+          'align-items': 'center',
+        },
+        '.flex-ac': {
+          display: 'flex',
+          'align-items': 'center',
+          'justify-content': 'space-around',
+        },
+        '.flex-bc': {
+          display: 'flex',
+          'align-items': 'center',
+          'justify-content': 'space-between',
+        },
+      })
+    }),
     plugin(function ({ addVariant }) {
       addVariant('hover-hover', '@media (hover: hover)')
     }),

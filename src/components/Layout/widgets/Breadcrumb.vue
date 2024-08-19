@@ -2,7 +2,7 @@
   <div class="max-md:hidden">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/' }">
-        <div class="center hover-transition-bg relative rounded-md px-1 py-1 leading-none">
+        <div class="hover-transition-bg flex-c relative rounded-md px-1 py-1 leading-none">
           <svg-icon name="home" class="h-4 w-4" />
         </div>
       </el-breadcrumb-item>

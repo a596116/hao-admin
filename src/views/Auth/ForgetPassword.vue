@@ -8,7 +8,7 @@
     submit-title="確定"
     @submit="actions.handleSubmit">
     <template #verify>
-      <div class="flex h-full w-full items-center justify-center gap-4">
+      <div class="flex-c h-full w-full gap-4">
         <el-input
           v-model.trim="state.data.verify"
           placeholder="請輸入驗證碼"

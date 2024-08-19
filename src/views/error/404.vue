@@ -1,8 +1,7 @@
 <template>
   <div
-    class="flex h-screen w-full flex-col items-center justify-center space-x-8 space-y-16 lg:flex-row lg:space-y-0 2xl:space-x-0">
-    <div
-      class="flex w-full flex-col items-center justify-center text-center lg:w-1/2 lg:px-2 xl:px-0">
+    class="flex-c h-screen w-full flex-col space-x-8 space-y-16 lg:flex-row lg:space-y-0 2xl:space-x-0">
+    <div class="flex-c w-full flex-col text-center lg:w-1/2 lg:px-2 xl:px-0">
       <p class="text-7xl font-bold tracking-wider text-hd-primary-hover md:text-8xl lg:text-9xl">
         404
       </p>

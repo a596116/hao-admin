@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center">
     <el-dropdown popper-class="rounded-md min-w-[220px]" trigger="click">
-      <div class="hover-transition-bg center rounded-full p-1 leading-none">
+      <div class="hover-transition-bg flex-c rounded-full p-1 leading-none">
         <el-image src="/avatar.png" class="logo1 h-7 w-7 rounded-full" fit="cover" :lazy="true" />
       </div>
       <template #dropdown>
