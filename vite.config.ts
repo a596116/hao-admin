@@ -5,9 +5,9 @@ import { __APP_INFO__ } from './vite/build/utils'
 import { include, exclude } from './vite/plugins/optimize'
 
 // https://vitejs.dev/config/
-export default ({ command, mode }: ConfigEnv): UserConfigExport => {
+export default ({ mode }: ConfigEnv): UserConfigExport => {
   // const isBuild = command === 'build'
-  // const env = loadEnv(mode, process.cwd(), '')
+  const env = loadEnv(mode, process.cwd(), '')
 
   return {
     plugins: [...setupPlugins()],
@@ -51,10 +51,17 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       host: '0.0.0.0',
       port: 9527,
       // 本地跨域代理 https://cn.vitejs.dev/config/server-options.html#server-proxy
-      proxy: {},
-      // 預熱文件以提前轉換和緩存結果，降低啓動期間的初始頁面加載時長並防止轉換瀑布
+      proxy: {
+        '^/api/.*': {
+          target: env.VITE_BASEURL,
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path: any) => path.replace(/^\/api/, ''),
+        },
+      },
+      // 预热文件以提前转换和缓存结果，降低启动期间的初始页面加载时长并防止转换瀑布
       warmup: {
-        clientFiles: ['./index.html', './src/{views,components}/*'],
+        clientFiles: ['./index.html', './src/{views,layouts,router,store}/*'],
       },
     },
     define: {
