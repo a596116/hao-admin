@@ -1,7 +1,7 @@
 <template>
   <main class="diy-page flex h-screen w-full flex-col">
     <header class="flex justify-between bg-hd-primary p-4">
-      <span class="text-h4 text-white" style="padding: 0" v-text="$route.meta.menu.title" />
+      <span class="text-h4 text-white" style="padding: 0" v-text="route.meta.menu.title" />
       <div class="">
         <el-button
           class="ml20 header-btn close"
@@ -18,7 +18,7 @@
       </div>
     </header>
 
-    <main class="diy-wrapper h-full">
+    <main class="diy-wrapper">
       <!-- 左側 -->
       <section class="left">
         <div class="wrapper">
@@ -84,7 +84,7 @@
             </div>
 
             <div class="scrollCon">
-              <div style="width: 100%; margin: 0 auto">
+              <div class="mx-auto w-[calc(100%-16px)]">
                 <div
                   ref="imgContainer"
                   class="scroll-box"
@@ -109,8 +109,8 @@
                     group="people"
                     filter=".top"
                     @move="(e) => actions.onMove"
-                    @change="(e) => actions.log(e, 'moved')"
-                    @add="(e) => actions.log(e, 'added')">
+                    @update="(e) => actions.log"
+                    @add="(e) => actions.log">
                     <TransitionGroup
                       ref="el"
                       type="transition"
@@ -130,13 +130,14 @@
                             ? 'background-color:' + colorPickerTxt + ';'
                             : 'background-color:#fff;'
                         "
-                        @click.stop="">
+                        @click.stop="actions.bindconfig(item, index)">
                         <component
                           :is="cPageComponent(item.name)"
                           ref="getComponentData"
                           :configData="state.propsObj"
                           :index="index"
                           :num="item.num" />
+
                         <!-- <div class="delete-box">
                           <div class="handleType">
                             <el-tooltip content="删除当前模块" placement="top">
@@ -197,9 +198,9 @@ import { VueDraggable } from 'vue-draggable-plus'
 import mPage from '@/components/PcPageCustom'
 import { PcPageMenuType, PcPageMenuTypeText } from '@/enum/PcPage'
 import { usePcConfigStore } from '@/stores/pcConfig'
-import HomeTitle from '@/components/PcPageCustom/home_title.vue'
 
 const pcConfigStore = usePcConfigStore()
+const route = useRoute()
 
 let idGlobal = 0
 const state = ref({
@@ -315,9 +316,9 @@ const actions = {
   /**
    * @description: 拖拽排序
    */
-  log(evt, type: 'moved' | 'added') {
+  log(evt) {
     // 中间拖拽排序
-    if (type == 'moved') {
+    if (evt.type == 'change') {
       console.log('moved', evt)
       if (evt.data?.name == 'search_box' || evt.data?.name == 'nav_bar') {
         notification.warning({
@@ -334,8 +335,8 @@ const actions = {
       })
       evt.clonedData.list = state.value.mConfig
       state.value.rConfig = []
-      let tempItem = { ...evt.clonedData, ...evt.data }
-      // let tempItem = JSON.parse(JSON.stringify(item))
+      // let tempItem = { ...evt.clonedData, ...evt.data }
+      let tempItem = JSON.parse(JSON.stringify({ ...evt.clonedData, ...evt.data }))
       state.value.rConfig.push(tempItem)
       state.value.activeIndex = evt.newIndex
 
@@ -344,7 +345,7 @@ const actions = {
     }
 
     // 從左向右拖拽排序
-    if (type == 'added') {
+    if (evt.type == 'add') {
       console.log('added', evt)
       let data = evt.data
       let obj = {}
@@ -368,8 +369,8 @@ const actions = {
       // 保存組件名稱
       pcConfigStore.setConfigName(data.name)
 
-      // pcConfigStore.defaultArraySort(tempItem)
-      pcConfigStore.defaultArraySort(evt.data)
+      pcConfigStore.defaultArraySort(tempItem)
+      // pcConfigStore.defaultArraySort(evt.data)
     }
   },
 
@@ -495,7 +496,8 @@ const actions = {
    */
   bindconfig(item, index) {
     state.value.rConfig = []
-    let tempItem = JSON.parse(JSON.stringify(item))
+    let tempItem = { ...item }
+    // let tempItem = JSON.parse(JSON.stringify(item))
     state.value.rConfig.push(tempItem)
     state.value.activeIndex = index
     pcConfigStore.setConfigName(item.name)
@@ -615,7 +617,7 @@ const actions = {
 }
 
 .wrapper-con {
-  @apply relative flex h-full flex-1 justify-center bg-[#f0f2f5] p-1;
+  @apply relative flex h-full flex-1 justify-center bg-[#f0f2f5];
 
   .acticons {
     position: absolute;
@@ -736,8 +738,11 @@ const actions = {
 }
 
 .diy-wrapper {
-  @apply flex h-full w-full min-w-[1100px] max-w-full flex-1 justify-between;
+  @apply flex w-full min-w-[1100px] max-w-full flex-1 justify-between;
 
+  height: calc(100vh - 73px);
+
+  // 左側
   .left {
     @apply w-[150px] border-r bg-white;
     // min-width: 300px;
@@ -835,51 +840,17 @@ const actions = {
     }
   }
 
+  // 中間
   .content {
     @apply relative flex size-full border-r;
 
     .contxt {
-      @apply flex h-full w-full flex-1 flex-col overflow-hidden;
-    }
-
-    .page-foot {
-      position: relative;
-      // width: 379px;
-      // margin: 0 auto 20px auto;
-
-      .delete-box {
-        position: absolute;
-        top: 0;
-        left: -2px;
-        display: none;
-        width: 383px;
-        height: 100%;
-        padding: 10px 0;
-        border: 2px dashed var(--hd-primary);
-      }
-
-      &:hover,
-      &.on {
-        /* cursor: move; */
-        .delete-box {
-          /* display: block; */
-        }
-      }
-
-      &.on {
-        cursor: move;
-
-        .delete-box {
-          display: block;
-          border: 2px solid var(--hd-primary);
-          box-shadow: 0 0 10px 0 rgb(24 144 255 / 30%);
-        }
-      }
+      @apply relative flex h-full w-full flex-1 flex-col;
     }
 
     .page-title {
       position: relative;
-      width: 100%;
+      width: calc(100% - 16px);
       height: 35px;
       margin: 0 auto;
       font-size: 15px;
@@ -914,6 +885,41 @@ const actions = {
           cursor: pointer;
           background: rgb(0 0 0 / 40%);
         }
+      }
+
+      &:hover,
+      &.on {
+        /* cursor: move; */
+        .delete-box {
+          /* display: block; */
+        }
+      }
+
+      &.on {
+        cursor: move;
+
+        .delete-box {
+          display: block;
+          border: 2px solid var(--hd-primary);
+          box-shadow: 0 0 10px 0 rgb(24 144 255 / 30%);
+        }
+      }
+    }
+
+    .page-foot {
+      position: relative;
+      // width: 379px;
+      // margin: 0 auto 20px auto;
+
+      .delete-box {
+        position: absolute;
+        top: 0;
+        left: -2px;
+        display: none;
+        width: 383px;
+        height: 100%;
+        padding: 10px 0;
+        border: 2px dashed var(--hd-primary);
       }
 
       &:hover,
@@ -988,6 +994,8 @@ const actions = {
 
         &.on {
           cursor: move;
+          border: 2px solid var(--hd-primary);
+          box-shadow: 0 0 10px 0 rgb(24 144 255 / 30%);
 
           .delete-box {
             display: block;
@@ -998,6 +1006,7 @@ const actions = {
       }
 
       .mConfig-item:hover {
+        z-index: 10;
         box-shadow: 0 0 10px 0 rgb(24 144 255 / 30%);
         transition: all 0.2s;
         transform: scale(1.01);
