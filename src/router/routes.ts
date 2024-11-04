@@ -4,9 +4,17 @@ export const routes = [
   {
     path: '/',
     name: 'admin',
-    redirect: '/home',
+    redirect: '/home_custom/1',
     component: () => import('@/layouts/index.vue'),
   },
+
+  {
+    name: 'home_custom/id',
+    path: '/home_custom/:id',
+    component: () => import('@/views/HomeCustom/HomeCustomManage.vue'),
+    meta: { menu: { title: '首頁裝飾', hiddenMenu: true } },
+  },
+
   {
     path: '/auth',
     name: 'auth',

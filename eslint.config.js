@@ -79,6 +79,7 @@ export default defineFlatConfig([
     },
     rules: {
       ...pluginTypeScript.configs.strict.rules,
+      '@typescript-eslint/no-dynamic-delete': 'off',
       '@typescript-eslint/ban-types': 'off',
       '@typescript-eslint/no-redeclare': 'error',
       '@typescript-eslint/ban-ts-comment': 'off',
@@ -154,6 +155,7 @@ export default defineFlatConfig([
       'vue/require-explicit-emits': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/no-setup-props-reactivity-loss': 'off',
+      '@typescript-eslint/no-dynamic-delete': 'off',
       'vue/html-self-closing': [
         'error',
         {
