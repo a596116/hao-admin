@@ -1,9 +1,26 @@
 <template>
-  <div>title</div>
+  <div
+    class="title-box"
+    :class="state.bgStyle === 0 ? '' : 'titleOn'"
+    :style="{
+      textAlign: state.txtPosition,
+      fontStyle: state.txtStyle != 'bold' ? state.txtStyle : '',
+      fontWeight: state.txtStyle == 'bold' ? state.txtStyle : '',
+      fontSize: state.fontSize + 'px',
+      marginTop: state.mTOP + 'px',
+      background: state.titleColor,
+      margin: '0 ' + state.prConfig + 'px',
+      color: state.themeColor,
+    }">
+    {{ state.titleTxt }}
+  </div>
 </template>
 
 <script setup lang="ts">
 import { PcPageMenuType } from '@/enum/PcPage'
+import { usePcConfigStore } from '@/stores/pcConfig'
+
+const pcConfigStore = usePcConfigStore()
 
 defineOptions({
   name: 'home_title',
@@ -132,17 +149,6 @@ defineOptions({
           min: 0,
         },
       },
-      tabVal: 0,
-      title: '標題',
-      link: '',
-      themeColor: '#282828',
-      titleColor: '#fff',
-      bgStyle: 0,
-      pr: 0,
-      textPosition: 0,
-      textStyle: 0,
-      fontSize: 12,
-      mb: 0,
     }
   },
 })
@@ -151,7 +157,84 @@ defineOptions({
 const props = withDefaults(
   defineProps<{
     num: number
+    index?: number
   }>(),
   {},
 )
+const {
+  state: {
+    value: { defaultArray },
+  },
+} = storeToRefs(pcConfigStore)
+const state = ref({
+  titleTxt: '',
+  link: '',
+  txtPosition: '' as any,
+  txtStyle: '',
+  fontSize: 0,
+  mTOP: 0,
+  titleColor: '',
+  themeColor: '',
+  prConfig: 0,
+  bgStyle: 0,
+  pageData: {},
+})
+
+onMounted(function () {
+  nextTick(function () {
+    state.value.pageData = defaultArray[props.num]
+    setConfig(state.value.pageData)
+  })
+})
+
+watch(
+  () => state.value.pageData,
+  (newVal) => {
+    setConfig(newVal)
+  },
+  { deep: true },
+)
+watch(
+  () => props.num,
+  (newVal) => {
+    let data = defaultArray[newVal]
+    setConfig(data)
+  },
+  { deep: true },
+)
+watch(
+  () => defaultArray,
+  (newVal) => {
+    let data = newVal[props.num]
+    setConfig(data)
+  },
+  { deep: true },
+)
+
+const setConfig = (data) => {
+  if (!data) return
+  if (data.mbConfig) {
+    state.value.titleTxt = data.titleConfig.value
+    state.value.link = data.linkConfig.value
+    state.value.txtPosition = data.textPosition.list[data.textPosition.type].style
+    state.value.txtStyle = data.textStyle.list[data.textStyle.type].style
+    state.value.themeColor = data.themeColor.color[0].item
+    state.value.fontSize = data.fontSize.val
+    state.value.mTOP = data.mbConfig.val
+    state.value.prConfig = data.prConfig.val
+    state.value.bgStyle = data.bgStyle.type
+    state.value.titleColor = data.titleColor.color[0].item
+  }
+}
 </script>
+
+<style scoped lang="scss">
+.title-box {
+  padding: 5px 10px;
+  color: #282828;
+}
+
+.titleOn {
+  border-radius: 10px !important;
+}
+</style>

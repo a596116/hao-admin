@@ -33,24 +33,26 @@
               :group="{ name: 'people', pull: 'clone', put: false }"
               :clone="actions.cloneDog"
               dragClass="dragClass"
+              :animation="150"
+              ghostClass="ghost"
               filter=".search , .navbar">
-              <TransitionGroup ref="el" type="transition" tag="ul" name="draggable-fade">
-                <li
-                  v-for="element in item.list"
-                  :key="element.name"
-                  class="list-group-item"
-                  :class="{
-                    search: element.cname == '搜索框',
-                    navbar: element.cname == '商品分类',
-                  }"
-                  @click="actions.addDom(element, 1)">
-                  <div>
-                    <div class="position" style="display: none">釋放鼠標將組建添加到此處</div>
-                    <SvgIcon class="conter iconfont-diy" :name="element.icon" />
-                    <p class="conter">{{ element.cname }}</p>
-                  </div>
-                </li>
-              </TransitionGroup>
+              <!-- <TransitionGroup ref="el" type="transition" tag="ul" name="fade"> -->
+              <div
+                v-for="element in item.list"
+                :key="element.name"
+                class="list-group-item"
+                :class="{
+                  search: element.cname == '搜索框',
+                  navbar: element.cname == '商品分类',
+                }"
+                @click="actions.addDom(element, 1)">
+                <div>
+                  <div class="position" style="display: none">釋放鼠標將組建添加到此處</div>
+                  <SvgIcon class="conter iconfont-diy" :name="element.icon" />
+                  <p class="conter">{{ element.cname }}</p>
+                </div>
+              </div>
+              <!-- </TransitionGroup> -->
             </VueDraggable>
           </div>
         </div>
@@ -77,68 +79,69 @@
                 class="page-title"
                 :class="{ on: state.activeIndex == -100 }"
                 @click="actions.showTitle">
-                {{ titleTxt }}
+                {{ s.pageTitle }}
                 <div class="delete-box" />
                 <div class="handle" />
               </div>
             </div>
 
-            <div class="scrollCon">
-              <div class="mx-auto w-[calc(100%-16px)]">
+            <div class="scrollCon flex h-full">
+              <div class="mx-auto w-[calc(100%-16px)] flex-1">
                 <div
                   ref="imgContainer"
                   class="scroll-box"
                   :class="
-                    picTxt && tabValTxt == 2
+                    s.pagePic && s.pageTabVal == 2
                       ? 'fullsize noRepeat'
-                      : picTxt && tabValTxt == 1
+                      : s.pagePic && s.pageTabVal == 1
                         ? 'repeat ysize'
                         : 'noRepeat ysize'
                   "
                   :style="
                     'background-color:' +
-                    (colorTxt ? colorPickerTxt : '') +
+                    (s.pageColor ? s.pageColorPicker : '') +
                     ';background-image: url(' +
-                    (picTxt ? picUrlTxt : '') +
+                    (s.pagePic ? s.pagePicUrl : '') +
                     ')'
                   ">
                   <VueDraggable
                     v-model="state.mConfig"
                     class="dragArea list-group"
-                    target=".c-target"
                     group="people"
                     filter=".top"
-                    @move="(e) => actions.onMove"
-                    @update="(e) => actions.log"
-                    @add="(e) => actions.log">
-                    <TransitionGroup
+                    :animation="150"
+                    ghostClass="ghost"
+                    @move="actions.onMove"
+                    @update="actions.log"
+                    @add="actions.log">
+                    <!-- <TransitionGroup
                       ref="el"
                       type="transition"
                       tag="ul"
-                      name="draggable-fade"
-                      class="c-target">
-                      <li
-                        v-for="(item, index) of state.mConfig"
-                        :key="index"
-                        class="mConfig-item"
-                        :class="{
-                          on: state.activeIndex == index,
-                          top: item.name == 'search_box' || item.name == 'nav_bar',
-                        }"
-                        :style="
-                          colorTxt
-                            ? 'background-color:' + colorPickerTxt + ';'
-                            : 'background-color:#fff;'
-                        "
-                        @click.stop="actions.bindconfig(item, index)">
-                        <component
-                          :is="cPageComponent(item.name)"
-                          ref="getComponentData"
-                          :configData="state.propsObj"
-                          :index="index"
-                          :num="item.num" />
+                      :name="!state.drag ? 'fade' : undefined"
+                      class="c-target"> -->
+                    <div
+                      v-for="(item, index) of state.mConfig"
+                      :key="index"
+                      class="mConfig-item"
+                      :class="{
+                        on: state.activeIndex == index,
+                        top: item.name == 'search_box' || item.name == 'nav_bar',
+                      }"
+                      :style="
+                        s.pageColor
+                          ? 'background-color:' + s.pageColorPicker + ';'
+                          : 'background-color:#fff;'
+                      "
+                      @click.stop="actions.bindconfig(item, index)">
+                      <component
+                        :is="cPageComponent(item.name)"
+                        ref="getComponentData"
+                        :configData="state.propsObj"
+                        :index="index"
+                        :num="item.num" />
 
-                        <!-- <div class="delete-box">
+                      <!-- <div class="delete-box">
                           <div class="handleType">
                             <el-tooltip content="删除当前模块" placement="top">
                               <div
@@ -163,9 +166,9 @@
                               @click.stop="movePage(item, key, 0)"></div>
                           </div>
                         </div> -->
-                        <div class="handle" />
-                      </li>
-                    </TransitionGroup>
+                      <div class="handle" />
+                    </div>
+                    <!-- </TransitionGroup> -->
                   </VueDraggable>
                 </div>
               </div>
@@ -188,7 +191,20 @@
       </section>
 
       <!-- 右侧 -->
-      <div class="right-box">right</div>
+      <div class="right-box">
+        <div
+          v-for="(item, key) in state.rConfig"
+          :key="key"
+          class="mConfig-item"
+          style="background-color: #fff">
+          <div class="title-bar">{{ item.cname }}</div>
+          <component
+            :is="rPageComponent(item.configName)"
+            :activeIndex="state.activeIndex"
+            :num="item.num"
+            :index="key" />
+        </div>
+      </div>
     </main>
   </main>
 </template>
@@ -196,6 +212,7 @@
 <script setup lang="ts">
 import { VueDraggable } from 'vue-draggable-plus'
 import mPage from '@/components/PcPageCustom'
+import mConfig from '@/components/PcPageConfig'
 import { PcPageMenuType, PcPageMenuTypeText } from '@/enum/PcPage'
 import { usePcConfigStore } from '@/stores/pcConfig'
 
@@ -206,8 +223,8 @@ let idGlobal = 0
 const state = ref({
   loading: false,
   /** 页面动态高度 */
-  clientHeight: '',
-  rollHeight: '',
+  clientHeight: 0,
+  rollHeight: 0,
 
   /** 左側菜單 */
   leftMenu: [],
@@ -223,13 +240,12 @@ const state = ref({
   /** 选中的下标 */
   activeIndex: -100,
   number: 0,
-  pageId: '',
-  pageName: '',
-  pageType: '',
+  pageId: Number(route.query.id) || 0,
+  pageName: String(route.query.name) || '',
+  pageType: String(route.query.type) || '',
   category: [],
   urlList: [],
   footActive: false,
-  loading: false,
   isSearch: false,
   isTab: false,
   isHomeProduct: false,
@@ -240,32 +256,66 @@ const state = ref({
   saveName: '',
 })
 
+onBeforeMount(() => {
+  pcConfigStore.updateTitle('')
+  pcConfigStore.updateName('')
+  pcConfigStore.updateShow(1)
+  pcConfigStore.updateColor(0)
+  pcConfigStore.updatePic(0)
+  pcConfigStore.updatePicker('#f5f5f5')
+  pcConfigStore.updateRadio(0)
+  pcConfigStore.updatePicUrl('')
+  pcConfigStore.resetState()
+})
+
 onMounted(() => {
   state.value.lConfig = actions.objToArr(mPage)
 
   nextTick(() => {
     actions.createLeftMenu()
+
+    if (state.value.pageId != 0) {
+      // actions.getDefaultConfig();
+    } else {
+      actions.showTitle()
+    }
+    state.value.clientHeight = document.documentElement.clientHeight //获取浏览器可视区域高度
+    let H = document.documentElement.clientHeight - 180
+    state.value.rollHeight = H > 650 ? 650 : H
+    let that = this
+    window.onresize = function () {
+      state.value.clientHeight = document.documentElement.clientHeight
+      let H = document.documentElement.clientHeight - 180
+      state.value.rollHeight = H > 650 ? 650 : H
+    }
   })
 })
 
 /** computed */
+const ccomponentCache = new Map()
 const cPageComponent = (name: string) => {
-  return defineAsyncComponent(() => import(`@/components/PcPageCustom/${name}.vue`))
+  if (!ccomponentCache.has(name)) {
+    ccomponentCache.set(
+      name,
+      defineAsyncComponent(() => import(`@/components/PcPageCustom/${name}.vue`)),
+    )
+  }
+  return ccomponentCache.get(name)
+}
+
+const rcomponentCache = new Map()
+const rPageComponent = (name) => {
+  if (!rcomponentCache.has(name)) {
+    rcomponentCache.set(
+      name,
+      defineAsyncComponent(() => import(`@/components/PcPageConfig/${name}.vue`)),
+    )
+  }
+  return rcomponentCache.get(name)
 }
 
 const {
-  state: {
-    value: {
-      pageTitle: titleTxt = '首頁',
-      pageName: nameTxt = '模版',
-      pageShow: showTxt,
-      pageColor: colorTxt,
-      pagePic: picTxt,
-      pageColorPicker: colorPickerTxt,
-      pageTabVal: tabValTxt,
-      pagePicUrl: picUrlTxt,
-    },
-  },
+  state: { value: s },
 } = storeToRefs(pcConfigStore)
 
 const actions = {
@@ -318,7 +368,7 @@ const actions = {
    */
   log(evt) {
     // 中间拖拽排序
-    if (evt.type == 'change') {
+    if (evt.type == 'change' || evt.type == 'update') {
       console.log('moved', evt)
       if (evt.data?.name == 'search_box' || evt.data?.name == 'nav_bar') {
         notification.warning({
@@ -333,10 +383,10 @@ const actions = {
       state.value.mConfig.forEach((el, index) => {
         el.num = new Date().getTime() * 1000 + index
       })
-      evt.clonedData.list = state.value.mConfig
+      evt.clonedData.list = [...state.value.mConfig]
       state.value.rConfig = []
-      // let tempItem = { ...evt.clonedData, ...evt.data }
-      let tempItem = JSON.parse(JSON.stringify({ ...evt.clonedData, ...evt.data }))
+      let tempItem = { ...evt.clonedData, ...evt.data }
+      // let tempItem = JSON.parse(JSON.stringify({ ...evt.clonedData, ...evt.data }))
       state.value.rConfig.push(tempItem)
       state.value.activeIndex = evt.newIndex
 
@@ -380,15 +430,16 @@ const actions = {
   showTitle() {
     state.value.activeIndex = -100
     let obj = {} as any
-    for (var i in state.value.mConfig) {
+    for (var i in mConfig) {
       if (i == 'pageTitle') {
-        obj = state.value.mConfig[i]
-        obj.configName = state.value.mConfig[i].name
+        obj = mConfig[i]
+        obj.configName = mConfig[i].name
         obj.cname = '頁面設置'
       }
     }
     state.value.rConfig = []
-    state.value.rConfig[0] = JSON.parse(JSON.stringify(obj))
+    state.value.rConfig[0] = { ...obj }
+    // state.value.rConfig[0] = JSON.parse(JSON.stringify(obj))
   },
 
   /**
@@ -397,15 +448,16 @@ const actions = {
   showFoot() {
     state.value.activeIndex = -101
     let obj = {} as any
-    for (var i in state.value?.mConfig) {
+    for (var i in mConfig) {
       if (i == 'pageFoot') {
-        obj = state.value.mConfig[i]
-        obj.configName = state.value.mConfig[i].name
+        obj = mConfig[i]
+        obj.configName = mConfig[i].name
         obj.cname = '底部菜單'
       }
     }
     state.value.rConfig = []
-    state.value.rConfig[0] = JSON.parse(JSON.stringify(obj))
+    state.value.rConfig[0] = { ...obj }
+    // state.value.rConfig[0] = JSON.parse(JSON.stringify(obj))
   },
 
   /**
@@ -495,6 +547,7 @@ const actions = {
    * @description: 點擊顯示相應的配置
    */
   bindconfig(item, index) {
+    console.log(item)
     state.value.rConfig = []
     let tempItem = { ...item }
     // let tempItem = JSON.parse(JSON.stringify(item))
@@ -942,7 +995,9 @@ const actions = {
     }
 
     .scroll-box {
-      @apply relative h-full w-full flex-1 bg-white pt-[1px];
+      @apply relative mx-auto h-full w-full flex-1 bg-white pt-[1px];
+
+      width: calc(100% - 16px);
     }
 
     .dragArea.list-group {
@@ -950,6 +1005,7 @@ const actions = {
       height: 100%;
 
       .mConfig-item {
+        // height: 100%;
         position: relative;
         cursor: move;
 
@@ -1015,9 +1071,13 @@ const actions = {
   }
 
   .right-box {
-    @apply h-full w-[300px] overflow-scroll;
+    @apply flex h-full w-[300px];
 
     -webkit-overflow-scrolling: touch;
+
+    .mConfig-item {
+      @apply size-full flex-1 overflow-scroll;
+    }
 
     :deep(.ivu-tabs-bar) {
       margin-bottom: 16px;

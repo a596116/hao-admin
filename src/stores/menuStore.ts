@@ -173,7 +173,7 @@ export const useMenuStore = defineStore(
   },
   {
     persist: {
-      paths: ['isMenuCollapse', 'route', 'isHistoryCollapse', 'historyMenus', 'isBreadCrumb'],
+      paths: ['isMenuCollapse', 'route', 'isTabbarCollapse', 'historyMenus', 'isBreadCrumb'],
     },
   },
 )

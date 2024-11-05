@@ -88,7 +88,6 @@ export const usePcConfigStore = defineStore('pc_config', () => {
       return arr
     }
 
-    console.log(data)
     if (data.oldIndex !== undefined) {
       sortArr = JSON.parse(JSON.stringify(swapArray(newArr)))
     } else {
