@@ -170,7 +170,7 @@ const actions = {
   background: #ccc;
 }
 
-::v-deep .ivu-input {
+:deep(.ivu-input) {
   font-size: 13px !important;
 }
 
@@ -226,7 +226,7 @@ const actions = {
   }
 }
 
-.ivu-color-picker ::v-deep .ivu-select-dropdown {
+.ivu-color-picker :deep(.ivu-select-dropdown) {
   position: absolute;
   // width: 300px !important;
   left: 34px !important;

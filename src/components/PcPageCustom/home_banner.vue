@@ -288,10 +288,10 @@ onMounted(function () {
   })
 })
 
-const navSize = computed(() => {
+const nav_size = computed(() => {
   return state.value.navStyle === 0 ? '44px' : '20px'
 })
-const pagAlign = computed(() => {
+const pag_align = computed(() => {
   return state.value.dotPosition === 0 ? 'start' : state.value.dotPosition === 1 ? 'center' : 'end'
 })
 
@@ -339,7 +339,7 @@ const setConfig = (data) => {
 .mySwiper {
   --swiper-pagination-color: v-bind(state.dotcolor);
   --swiper-navigation-color: v-bind(state.dotcolor);
-  --swiper-navigation-size: v-bind(navsize);
+  --swiper-navigation-size: v-bind(nav_size);
 
   &.pagination-square {
     :deep(.swiper-pagination-bullet) {
@@ -350,7 +350,7 @@ const setConfig = (data) => {
   }
 
   :deep(.swiper-pagination) {
-    text-align: v-bind(pagalign);
+    text-align: v-bind(pag_align);
   }
 }
 

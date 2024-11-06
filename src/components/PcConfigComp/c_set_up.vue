@@ -116,11 +116,11 @@ const onClickTab = (e: number) => {
   }
 }
 
-.setUp ::v-deep .ivu-tabs-nav-scroll {
+.setUp :deep(.ivu-tabs-nav-scroll) {
   padding: 0 30px;
 }
 
-.setUp ::v-deep .ivu-tabs-nav .ivu-tabs-tab {
+.setUp :deep(.ivu-tabs-nav .ivu-tabs-tab) {
   padding: 8px 45px;
 }
 </style>

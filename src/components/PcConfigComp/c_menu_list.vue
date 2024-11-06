@@ -240,7 +240,7 @@ const actions = {
           .input-box {
             flex: 1;
 
-            ::v-deep .ivu-input {
+            :deep(.ivu-input) {
               font-size: 13px !important;
             }
           }
