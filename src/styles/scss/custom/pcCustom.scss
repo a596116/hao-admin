@@ -1,0 +1,15 @@
+.c_label {
+  @apply text-sm text-[#999999];
+}
+
+.c_label span {
+  @apply ml-2 text-sm text-[#333333];
+}
+
+.c_row-item {
+  @apply flex-bc;
+}
+
+.pc-config {
+  @apply w-full p-2;
+}

@@ -1,7 +1,7 @@
 <template>
   <div v-if="state.configData" class="box">
-    <div class="c_row-item">
-      <el-col class="text-sm" :span="24">
+    <el-row :gutter="24" class="c_row-item1">
+      <el-col class="c_label" :span="24">
         {{ state.configData.title }}
       </el-col>
       <el-col :span="24" class="slider-box">
@@ -14,7 +14,7 @@
             :maxlength="state.configData.max" />
         </div>
       </el-col>
-    </div>
+    </el-row>
   </div>
 </template>
 
@@ -53,7 +53,7 @@ watch(
   font-size: 13px !important;
 }
 
-.c_row-item {
+.c_row-item1 {
   @apply flex flex-col gap-1;
 
   margin-bottom: 13px;

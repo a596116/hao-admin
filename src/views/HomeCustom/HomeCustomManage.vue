@@ -20,43 +20,71 @@
 
     <main class="diy-wrapper">
       <!-- 左側 -->
-      <section class="left">
-        <div class="wrapper">
-          <div v-for="(item, index) in state.leftMenu" :key="index">
-            <div class="tips">
-              {{ item.title }}
-            </div>
+      <div class="right-box">
+        <div
+          v-for="(item, key) in state.rConfig"
+          :key="key"
+          class="mConfig-item"
+          style="background-color: #fff">
+          <section class="title-bar">
+            <span class="">{{ item.cname }}</span>
 
-            <VueDraggable
-              v-model="item.list"
-              class="dragArea list-group"
-              :group="{ name: 'people', pull: 'clone', put: false }"
-              :clone="actions.cloneDog"
-              dragClass="dragClass"
-              :animation="150"
-              ghostClass="ghost"
-              filter=".search , .navbar">
-              <!-- <TransitionGroup ref="el" type="transition" tag="ul" name="fade"> -->
-              <div
-                v-for="element in item.list"
-                :key="element.name"
-                class="list-group-item"
-                :class="{
-                  search: element.cname == '搜索框',
-                  navbar: element.cname == '商品分类',
-                }"
-                @click="actions.addDom(element, 1)">
-                <div>
-                  <div class="position" style="display: none">釋放鼠標將組建添加到此處</div>
-                  <SvgIcon class="conter iconfont-diy" :name="element.icon" />
-                  <p class="conter">{{ element.cname }}</p>
-                </div>
-              </div>
-              <!-- </TransitionGroup> -->
-            </VueDraggable>
-          </div>
+            <el-popover :width="220" trigger="hover" popper-class="p-0">
+              <template #reference>
+                <el-button type="primary">添加組件</el-button>
+              </template>
+
+              <template #default>
+                <section class="left">
+                  <div class="wrapper">
+                    <div v-for="(item, index) in state.leftMenu" :key="index">
+                      <div class="tips">
+                        {{ item.title }}
+                      </div>
+
+                      <VueDraggable
+                        v-model="item.list"
+                        class="dragArea list-group"
+                        :group="{ name: 'people', pull: 'clone', put: false }"
+                        :clone="actions.cloneDog"
+                        dragClass="dragClass"
+                        :animation="150"
+                        ghostClass="ghost"
+                        filter=".search , .navbar">
+                        <!-- <TransitionGroup ref="el" type="transition" tag="ul" name="fade"> -->
+                        <div
+                          v-for="element in item.list"
+                          :key="element.name"
+                          class="list-group-item"
+                          :class="{
+                            search: element.cname == '搜索框',
+                            navbar: element.cname == '商品分类',
+                          }"
+                          @click="actions.addDom(element, 1)">
+                          <div>
+                            <div class="position" style="display: none">
+                              釋放鼠標將組建添加到此處
+                            </div>
+                            <SvgIcon class="conter iconfont-diy" :name="element.icon" />
+                            <p class="conter">{{ element.cname }}</p>
+                          </div>
+                        </div>
+                        <!-- </TransitionGroup> -->
+                      </VueDraggable>
+                    </div>
+                  </div>
+                </section>
+              </template>
+            </el-popover>
+          </section>
+
+          <component
+            :is="rPageComponent(item.configName)"
+            :activeIndex="state.activeIndex"
+            :num="item.num"
+            :index="key" />
         </div>
-      </section>
+      </div>
 
       <!-- 中间 -->
       <section class="wrapper-con">
@@ -191,20 +219,6 @@
       </section>
 
       <!-- 右侧 -->
-      <div class="right-box">
-        <div
-          v-for="(item, key) in state.rConfig"
-          :key="key"
-          class="mConfig-item"
-          style="background-color: #fff">
-          <div class="title-bar">{{ item.cname }}</div>
-          <component
-            :is="rPageComponent(item.configName)"
-            :activeIndex="state.activeIndex"
-            :num="item.num"
-            :index="key" />
-        </div>
-      </div>
     </main>
   </main>
 </template>
@@ -294,6 +308,7 @@ onMounted(() => {
 /** computed */
 const ccomponentCache = new Map()
 const cPageComponent = (name: string) => {
+  return defineAsyncComponent(() => import(`@/components/PcPageCustom/${name}.vue`))
   if (!ccomponentCache.has(name)) {
     ccomponentCache.set(
       name,
@@ -305,6 +320,7 @@ const cPageComponent = (name: string) => {
 
 const rcomponentCache = new Map()
 const rPageComponent = (name) => {
+  return defineAsyncComponent(() => import(`@/components/PcPageConfig/${name}.vue`))
   if (!rcomponentCache.has(name)) {
     rcomponentCache.set(
       name,
@@ -547,7 +563,7 @@ const actions = {
    * @description: 點擊顯示相應的配置
    */
   bindconfig(item, index) {
-    console.log(item)
+    // console.log(item)
     state.value.rConfig = []
     let tempItem = { ...item }
     // let tempItem = JSON.parse(JSON.stringify(item))
@@ -583,6 +599,13 @@ const actions = {
     }
     // 刪除第幾個配置
     pcConfigStore.deleteArray(key)
+  },
+
+  // 组件返回
+  config(data) {
+    let propsObj = state.value.propsObj as any
+    propsObj.data = data
+    propsObj.name = state.value.activeConfigName
   },
 
   cloneDog(data) {
@@ -790,112 +813,108 @@ const actions = {
   color: var(--hd-primary);
 }
 
-.diy-wrapper {
-  @apply flex w-full min-w-[1100px] max-w-full flex-1 justify-between;
+// 左側
+.left {
+  @apply w-full bg-white;
 
-  height: calc(100vh - 73px);
+  .wrapper {
+    @apply flex flex-col gap-4 p-2;
 
-  // 左側
-  .left {
-    @apply w-[150px] border-r bg-white;
-    // min-width: 300px;
-    // max-width: 300px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 
-    /* border 1px solid #DDDDDD */
+    .tips {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 15px;
+      font-size: 13px;
+      color: #000;
+      cursor: pointer;
+    }
+  }
 
-    .wrapper {
-      @apply flex flex-col gap-4 p-2;
+  .link-item {
+    padding: 10px;
+    font-size: 12px;
+    color: #323232;
+    border-bottom: 1px solid #f5f5f5;
 
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
-
-      .tips {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 15px;
-        font-size: 13px;
-        color: #000;
-        cursor: pointer;
-      }
+    .name {
+      font-size: 14px;
+      color: var(--hd-primary);
     }
 
-    .link-item {
-      padding: 10px;
-      font-size: 12px;
-      color: #323232;
-      border-bottom: 1px solid #f5f5f5;
+    .copy_btn {
+      cursor: pointer;
+    }
 
-      .name {
-        font-size: 14px;
-        color: var(--hd-primary);
+    .link-txt {
+      margin-top: 2px;
+      word-break: break-all;
+    }
+
+    .params {
+      margin-top: 5px;
+      color: #1cbe6b;
+      word-break: break-all;
+
+      .txt {
+        color: #323232;
       }
 
-      .copy_btn {
-        cursor: pointer;
-      }
-
-      .link-txt {
-        margin-top: 2px;
-        word-break: break-all;
-      }
-
-      .params {
-        margin-top: 5px;
-        color: #1cbe6b;
-        word-break: break-all;
-
-        .txt {
-          color: #323232;
-        }
-
-        span {
-          &:last-child i {
-            display: none;
-            color: red;
-          }
-        }
-      }
-
-      .lable {
-        display: flex;
-        margin-top: 5px;
-        color: #999;
-
-        p {
-          flex: 1;
-          word-break: break-all;
-        }
-
-        button {
-          width: 38px;
-          margin-left: 30px;
+      span {
+        &:last-child i {
+          display: none;
+          color: red;
         }
       }
     }
 
-    .dragArea.list-group {
-      @apply flex w-full flex-wrap gap-[10px];
+    .lable {
+      display: flex;
+      margin-top: 5px;
+      color: #999;
 
-      .list-group-item {
-        @apply flex-c size-[60px] cursor-pointer flex-col rounded-[5px] text-center text-xs text-[#666];
+      p {
+        flex: 1;
+        word-break: break-all;
+      }
 
-        &:hover {
-          border-right: 5px;
-          box-shadow: 0 0 5px 0 rgb(24 144 255 / 30%);
-          transition: all 0.2s;
-          transform: scale(1.1);
-        }
-
-        &:nth-child(3n) {
-          margin-right: 0;
-        }
+      button {
+        width: 38px;
+        margin-left: 30px;
       }
     }
   }
 
+  .dragArea.list-group {
+    @apply flex w-full flex-wrap gap-[10px];
+
+    .list-group-item {
+      @apply flex-c size-[60px] cursor-pointer flex-col rounded-[5px] text-center text-xs text-[#666];
+
+      &:hover {
+        border-right: 5px;
+        box-shadow: 0 0 5px 0 rgb(24 144 255 / 30%);
+        transition: all 0.2s;
+        transform: scale(1.1);
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.diy-wrapper {
+  @apply flex w-full max-w-full flex-1 justify-between;
+
+  height: calc(100vh - 73px);
+
   // 中間
   .content {
-    @apply relative flex size-full border-r;
+    @apply relative flex size-full flex-1 border-r;
 
     .contxt {
       @apply relative flex h-full w-full flex-1 flex-col;
@@ -995,7 +1014,7 @@ const actions = {
     }
 
     .scroll-box {
-      @apply relative mx-auto h-full w-full flex-1 bg-white pt-[1px];
+      @apply relative mx-auto h-full flex-1 bg-white pt-[1px];
 
       width: calc(100% - 16px);
     }
@@ -1070,6 +1089,7 @@ const actions = {
     }
   }
 
+  // 右側
   .right-box {
     @apply flex h-full w-[300px];
 
@@ -1084,6 +1104,8 @@ const actions = {
     }
 
     .title-bar {
+      @apply flex-bc;
+
       width: 100%;
       height: 45px;
       padding-left: 24px;

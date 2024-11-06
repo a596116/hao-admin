@@ -1,6 +1,6 @@
 <template>
   <div class="pc-config">
-    <div v-for="(item, key) in state.rCom" :key="key" class="w-full">
+    <div v-for="(item, key) in state.rCom" :key="key">
       <component
         :is="componentName(item.components.name)"
         ref="childData"
@@ -10,7 +10,7 @@
         :index="activeIndex"
         :num="item.num" />
     </div>
-    <!-- <rightBtn :activeIndex="activeIndex" :configObj="configObj"></rightBtn> -->
+    <!-- <rightBtn :activeIndex="activeIndex" :configObj="state.configObj"></rightBtn> -->
   </div>
 </template>
 
@@ -22,8 +22,8 @@ const pcConfigStore = usePcConfigStore()
 const tools = toolCom as any
 
 defineOptions({
-  name: 'c_home_bargain',
-  componentsName: 'home_bargain',
+  name: 'c_banner',
+  componentsName: 'home_banner',
 })
 
 const componentCache = new Map()
@@ -72,7 +72,7 @@ watch(
 watch(
   () => state.value.configObj,
   (nVal, oVal) => {
-    pcConfigStore.updateArray({ num: props.num, val: nVal })
+    pcConfigStore.updateArray({ num: props.num, val: { ...nVal } })
   },
   {
     deep: true,
@@ -86,54 +86,45 @@ watch(
     if (nVal == 0) {
       let tempArr = [
         {
-          components: tools.c_input_item,
-          configNme: 'titleConfig',
+          components: tools.c_menu_list,
+          configNme: 'swiperConfig',
         },
-        // {
-        // @ts-ignore
-        //   components: toolCom.c_input_item,
-        //   configNme: 'linkConfig',
-        // },
       ]
       state.value.rCom = arr.concat(tempArr)
     } else {
       let tempArr = [
-        {
-          components: tools.c_bg_color,
-          configNme: 'titleColor',
-        },
-        {
-          components: tools.c_bg_color,
-          configNme: 'themeColor',
-        },
-        {
-          components: tools.c_txt_tab,
-          configNme: 'textPosition',
-        },
-        {
-          components: tools.c_txt_tab,
-          configNme: 'textStyle',
-        },
         // {
         //   components: tools.c_txt_tab,
-        //   configNme: 'bgStyle',
+        //   configNme: 'imgConfig',
         // },
         {
-          components: tools.c_slider,
-          configNme: 'fontSize',
+          components: tools.c_txt_tab,
+          configNme: 'navConfig',
         },
         {
-          components: tools.c_slider,
-          configNme: 'prConfig',
+          components: tools.c_txt_tab,
+          configNme: 'docConfig',
         },
         {
-          components: tools.c_slider,
-          configNme: 'pxConfig',
+          components: tools.c_txt_tab,
+          configNme: 'txtStyle',
         },
+        // {
+        //   components: tools.c_is_show,
+        //   configNme: 'isShow',
+        // },
+        // {
+        //   components: tools.c_bg_color,
+        //   configNme: 'bgColor',
+        // },
         {
-          components: tools.c_slider,
-          configNme: 'pyConfig',
+          components: tools.c_bg_color,
+          configNme: 'dotColor',
         },
+        // {
+        //   components: tools.c_slider,
+        //   configNme: 'lrConfig',
+        // },
         {
           components: tools.c_slider,
           configNme: 'mbConfig',
@@ -153,6 +144,14 @@ onMounted(() => {
     state.value.configObj = value
   })
 })
+
+const handleSubmit = (name: string) => {
+  let obj = {
+    activeIndex: props.activeIndex,
+    data: state.value.configObj,
+  }
+  pcConfigStore.updateArray(obj)
+}
 </script>
 
 <style scoped lang="scss">

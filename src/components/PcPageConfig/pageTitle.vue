@@ -2,7 +2,7 @@
   <div class="box">
     <!-- 模板名稱 -->
     <!-- <div class="c_row-item" v-if="Number(route.query.type) !== 2">
-      <el-col class="text-sm" :span="24"> 模板名稱 </el-col>
+      <el-col class="c_label" :span="24"> 模板名稱 </el-col>
       <el-col :span="24" class="slider-box">
         <el-input
           v-model="s.pageName"
@@ -13,8 +13,8 @@
     </div> -->
 
     <!-- 頁面標題 -->
-    <div class="c_row-item">
-      <el-col class="text-sm" :span="24"> 頁面標題 </el-col>
+    <div class="c_row-item1">
+      <el-col class="c_label" :span="24"> 頁面標題 </el-col>
       <el-col :span="24" class="slider-box">
         <el-input
           v-model="s.pageTitle"
@@ -25,8 +25,8 @@
     </div>
 
     <!-- 背景設置 -->
-    <div class="c_row-item">
-      <el-col class="text-sm" :span="24"> 背景設置 </el-col>
+    <div class="c_row-item1">
+      <el-col class="c_label" :span="24"> 背景設置 </el-col>
       <el-col :span="24" class="slider-box">
         <!-- 背景色 -->
         <div class="color flex-bc">
@@ -180,7 +180,7 @@ const actions = {
   color: #999;
 }
 
-.c_row-item {
+.c_row-item1 {
   @apply flex flex-col gap-1;
 
   padding: 0 15px;

@@ -20,6 +20,7 @@ export default {
     },
   ],
   rules: {
+    'function-no-unknown': null,
     'no-duplicate-selectors': null,
     'prettier/prettier': true,
     'selector-class-pattern': null,

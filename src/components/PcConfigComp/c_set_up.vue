@@ -41,7 +41,7 @@ watch(
       state.value.tabVal = state.value.configData.tabVal
     })
   },
-  { deep: true },
+  { deep: true, immediate: true },
 )
 
 onMounted(() => {

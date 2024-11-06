@@ -1,15 +1,15 @@
 <template>
   <div
     class="title-box"
-    :class="state.bgStyle === 0 ? '' : 'titleOn'"
     :style="{
       textAlign: state.txtPosition,
       fontStyle: state.txtStyle != 'bold' ? state.txtStyle : '',
       fontWeight: state.txtStyle == 'bold' ? state.txtStyle : '',
       fontSize: state.fontSize + 'px',
-      marginTop: state.mTOP + 'px',
-      background: state.titleColor,
       margin: '0 ' + state.prConfig + 'px',
+      marginTop: `${state.mTOP}px`,
+      padding: `${state.pyConfig}px ${state.pxConfig}px`,
+      background: state.titleColor,
       color: state.themeColor,
     }">
     {{ state.titleTxt }}
@@ -76,26 +76,22 @@ defineOptions({
             },
           ],
         },
-        bgStyle: {
-          title: '背景樣式',
-          name: 'bgStyle',
-          type: 0,
-          list: [
-            {
-              val: '直角',
-              icon: 'iconPic_square',
-            },
-            {
-              val: '圓角',
-              icon: 'iconPic_fillet',
-            },
-          ],
-        },
-        prConfig: {
-          title: '背景邊距',
-          val: 0,
-          min: 0,
-        },
+        // bgStyle: {
+        //   title: '背景樣式',
+        //   name: 'bgStyle',
+        //   type: 0,
+        //   list: [
+        //     {
+        //       val: '直角',
+        //       icon: 'iconPic_square',
+        //     },
+        //     {
+        //       val: '圓角',
+        //       icon: 'iconPic_fillet',
+        //     },
+        //   ],
+        // },
+
         textPosition: {
           title: '文本位置',
           type: 0,
@@ -103,17 +99,17 @@ defineOptions({
             {
               val: '居左',
               style: 'left',
-              icon: 'icondoc_left',
+              icon: 'doc_left',
             },
             {
               val: '居中',
               style: 'center',
-              icon: 'icondoc_center',
+              icon: 'doc_center',
             },
             {
               val: '居右',
               style: 'right',
-              icon: 'icondoc_right',
+              icon: 'doc_right',
             },
           ],
         },
@@ -124,17 +120,17 @@ defineOptions({
             {
               val: '正常',
               style: 'normal',
-              icon: 'icondoc_general',
+              icon: 'doc_general',
             },
             {
               val: '斜體',
               style: 'italic',
-              icon: 'icondoc_skew',
+              icon: 'doc_skew',
             },
             {
               val: '加粗',
               style: 'bold',
-              icon: 'icondoc_bold',
+              icon: 'doc_bold',
             },
           ],
         },
@@ -142,6 +138,21 @@ defineOptions({
           title: '文本大小',
           val: 12,
           min: 12,
+        },
+        prConfig: {
+          title: '背景左右(外邊距)',
+          val: 0,
+          min: 0,
+        },
+        pxConfig: {
+          title: '背景左右(內邊距)',
+          val: 0,
+          min: 0,
+        },
+        pyConfig: {
+          title: '背景上下(內邊距)',
+          val: 0,
+          min: 0,
         },
         mbConfig: {
           title: '頁面間距',
@@ -176,7 +187,9 @@ const state = ref({
   titleColor: '',
   themeColor: '',
   prConfig: 0,
-  bgStyle: 0,
+  pxConfig: 0,
+  pyConfig: 0,
+  // bgStyle: 0,s
   pageData: {},
 })
 
@@ -222,7 +235,9 @@ const setConfig = (data) => {
     state.value.fontSize = data.fontSize.val
     state.value.mTOP = data.mbConfig.val
     state.value.prConfig = data.prConfig.val
-    state.value.bgStyle = data.bgStyle.type
+    state.value.pxConfig = data.pxConfig.val
+    state.value.pyConfig = data.pyConfig.val
+    // state.value.bgStyle = data.bgStyle.type
     state.value.titleColor = data.titleColor.color[0].item
   }
 }
